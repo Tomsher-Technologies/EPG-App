@@ -1,0 +1,1 @@
+php artisan serve --host=epgapp.local
