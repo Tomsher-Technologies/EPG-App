@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->foreignIdFor(Member::class);
             $table->foreignIdFor(Location::class);
+            $table->foreignId('receptionist_id')->references('id')->on('users');
             $table->decimal('points', $precision = 8, $scale = 2);
             $table->timestamps();
         });

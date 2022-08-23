@@ -14,7 +14,10 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'member_id' => rand(1, 35),
+            'location_id' => rand(1, 15),
+            'receptionist_id' => 1,
+            'points' => rand(10, 150),
         ];
     }
 }
