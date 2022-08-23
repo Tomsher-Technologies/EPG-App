@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Http\Controllers\Member;
+
+use App\Http\Controllers\Controller;
+use App\Models\Member\Member;
+use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
+use App\Models\Location\Location;
+use App\Models\Location\Package;
+use Illuminate\Http\Request;
+
+class MemberController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $filter_search = $request->search ?? "";
+
+        $members = Member::select('*');
+        if ($filter_search) {
+            $members->where('name', 'LIKE', '%' . $filter_search . '%')
+                ->orWhere('email', 'LIKE', '%' . $filter_search . '%')
+                ->orWhere('phone', 'LIKE', '%' . $filter_search . '%');
+        }
+        $members->with('package');
+        dd($members->get());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $packages = Package::whereStatus(true)->get();
+        return view('admin.members.create')
+            ->with([
+                'packages' => $packages
+            ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreMemberRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreMemberRequest $request)
+    {
+        $member = Member::create($request->merge([
+            'status' => true,
+            'total_earned' => 0,
+            'total_redeemed' => 0,
+        ])->all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Member\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Member $member)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Member\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Member $member)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateMemberRequest  $request
+     * @param  \App\Models\Member\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateMemberRequest $request, Member $member)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Member\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Member $member)
+    {
+        //
+    }
+}

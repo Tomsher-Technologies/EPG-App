@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Member\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix(env('ADMIN_PREFIX'))->group(function () {
+    // Route::middleware(['auth', 'auth.session'])->group(function () {
+
+    Route::resource('members', MemberController::class);
+
+    // });
 });
