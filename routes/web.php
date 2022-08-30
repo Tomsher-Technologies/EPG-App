@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Member\MemberController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::prefix(env('ADMIN_PREFIX'))->group(function () {
-    // Route::middleware(['auth', 'auth.session'])->group(function () {
+    Route::middleware(['auth', 'auth.session'])->group(function () {
 
-    Route::resource('members', MemberController::class);
+        Route::get('/', function () {
+            return redirect()->route('login');
+        });
 
-    // });
+        Route::get('dashboard', [DashboardController::class, 'index']);
+        Route::resource('members', MemberController::class);
+    });
 });

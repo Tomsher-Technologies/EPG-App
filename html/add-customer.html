@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Raffles- Dashboard</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+        rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="vendor/spinkit.css" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="vendor/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="css/material-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="css/fontawesome.css" rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="css/preloader.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="css/app.css" rel="stylesheet">
+
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="css/sweetalert.css">
+
+</head>
+
+<body class="layout-compact layout-compact">
+
+    <div class="preloader">
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
+
+        <!-- <div class="sk-bounce">
+    <div class="sk-bounce-dot"></div>
+    <div class="sk-bounce-dot"></div>
+  </div> -->
+
+        <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+    </div>
+
+    <!-- Drawer Layout -->
+
+    <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+        <div class="mdk-drawer-layout__content page-content">
+
+            <!-- Header -->
+
+            <!-- Navbar -->
+
+            <div class="navbar navbar-expand pr-0 navbar-light border-bottom-2" id="default-navbar" data-primary>
+
+                <!-- Navbar Toggler -->
+
+                <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0" type="button"
+                    data-toggle="sidebar">
+                    <span class="material-icons">short_text</span>
+                </button>
+
+                <!-- // END Navbar Toggler -->
+
+                <!-- Navbar Brand -->
+
+                <a href="index.html" class="navbar-brand mr-16pt d-lg-none">
+
+                    <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                        <span class="avatar-title rounded bg-primary"><img src="images/logo/logo.png" alt="logo"
+                                class="img-fluid" /></span>
+
+                    </span>
+
+                    <span class="d-none d-lg-block">Raffles</span>
+                </a>
+
+                <!-- // END Navbar Brand -->
+
+
+
+                <!-- Navbar Search -->
+
+                <form class="search-form navbar-search d-none d-md-flex mr-16pt" action="index.html">
+                    <button class="btn" type="submit"><i class="material-icons">search</i></button>
+                    <input type="text" class="form-control" placeholder="Search ...">
+                </form>
+
+                <!-- // END Navbar Search -->
+
+                <div class="flex"></div>
+
+                <!-- Switch Layout -->
+
+
+                <!-- // END Switch Layout -->
+
+                <!-- Navbar Menu -->
+
+                <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+
+
+
+                    <!-- Notifications dropdown -->
+                    <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
+                        data-toggle="tooltip" data-title="Notifications" data-placement="bottom" data-boundary="window">
+                        <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
+                            data-caret="false">
+                            <i class="material-icons">notifications_none</i>
+                            <span class="badge badge-notifications badge-accent">2</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div data-perfect-scrollbar class="position-relative">
+                                <div class="dropdown-header"><strong>System notifications</strong></div>
+                                <div class="list-group list-group-flush mb-0">
+
+                                    <a href="javascript:void(0);" class="list-group-item list-group-item-action unread">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-black-50">3 minutes ago</small>
+
+                                            <span class="ml-auto unread-indicator bg-accent"></span>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i
+                                                        class="material-icons font-size-16pt text-accent">account_circle</i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+
+                                                <span class="text-black-70">Your profile information has not been synced
+                                                    correctly.</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-black-50">5 hours ago</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="material-icons font-size-16pt text-primary">group_add</i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+                                                <strong class="text-black-100">Adrian. D</strong>
+                                                <span class="text-black-70">Wants to join your private group.</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-black-50">1 day ago</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="material-icons font-size-16pt text-warning">storage</i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+
+                                                <span class="text-black-70">Your deploy was successful.</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // END Notifications dropdown -->
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown"
+                            data-caret="false">
+
+                            <span class="avatar avatar-sm mr-8pt2">
+
+                                <span class="avatar-title rounded-circle bg-primary"><i
+                                        class="material-icons">account_box</i></span>
+
+                            </span>
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-header"><strong>Account</strong></div>
+                            <a class="dropdown-item" href="edit-account.html">Edit Account</a>
+
+                            <a class="dropdown-item" href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- // END Navbar Menu -->
+
+            </div>
+
+            <!-- // END Navbar -->
+
+            <!-- // END Header -->
+
+           
+            <!-- BEFORE Page Content -->
+
+            <!-- // END BEFORE Page Content -->
+
+            <!-- Page Content -->
+
+            <div class="page-section container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Add New customer</div>
+
+                </div>
+
+          
+                <div class="row">
+                    <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Full name</label>
+                            <input type="text" class="form-control" value="Alexander" placeholder="Your first name ...">
+                        </div>
+                      
+                        <div class="form-group">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" value="alexander.watson@fake-mail.com" placeholder="Your email address ...">
+                            <small class="form-text text-muted">Note that if you change your email, you will have to confirm it again.</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label">Phone no.</label>
+                            <input type="text" class="form-control" value="0569123456" placeholder="Your phone no ...">
+                        </div>
+
+
+                     
+
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="select01">Nationality</label>
+                            <select id="select01"
+                                    data-toggle="select"
+                                    class="form-control">
+                                <option selected="">UAE </option>
+                                <option>USA</option>
+                                <option>CANADA</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="select01">Country</label>
+                            <select id="select01"
+                                    data-toggle="select"
+                                    class="form-control">
+                                <option selected="">UAE</option>
+                                <option>USA</option>
+                                <option>CANADA</option>
+                            </select>
+                        </div>
+
+
+
+
+
+                        <button class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+                        
+    
+            </div>
+                 
+
+
+
+             
+
+            </div>
+
+            <!-- // END Page Content -->
+
+            <!-- Footer -->
+
+            <div class="bg-white border-top-2 mt-auto">
+                <div class="container page__container page-section d-flex flex-column">
+                    <p class="text-70 brand mb-24pt">
+                        <img class="brand-icon" src="images/logo/logo.png" width="150" alt="Raffles">
+                    </p>
+
+                    <p class="mb-8pt d-flex">
+                        <a href="" class="text-70 text-underline mr-8pt small">Terms</a>
+                        <a href="" class="text-70 text-underline small">Privacy policy</a>
+                    </p>
+                    <p class="text-50 small mt-n1 mb-0">Copyright 2022 &copy; All rights reserved.</p>
+                </div>
+            </div>
+
+            <!-- // END Footer -->
+
+        </div>
+
+        <!-- // END drawer-layout__content -->
+
+        <!-- drawer -->
+
+
+        <!-- drawer -->
+        <div class="mdk-drawer js-mdk-drawer layout-compact__drawer" id="default-drawer">
+            <div class="mdk-drawer__content js-sidebar-mini" data-responsive-width="992px" data-layout="compact">
+
+                <div class="sidebar sidebar-mini sidebar-dark-pickled-bluewood sidebar-left d-flex flex-column">
+
+                    <!-- Brand -->
+                    <a href="index.html" class="sidebar-brand p-0 navbar-height d-flex justify-content-center">
+
+                        <span class="avatar avatar-sm ">
+
+                            <span class="avatar-title rounded bg-primary"><img
+                                    src="images/logo/logo-1.png"  class="img-fluid"
+                                    alt="logo" /></span>
+
+                        </span>
+
+                    </a>
+
+                    <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+                        <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0 sm-item-bordered js-sidebar-mini-tabs"
+                            role="tablist">
+
+
+                            <li class="sidebar-menu-item ">
+                                <a class="sidebar-menu-button" href="dashboard.html">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i>
+                                    <span class="sidebar-menu-text">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item active" data-title="Customers" data-placement="right"
+                                data-boundary="window">
+                                <a class="sidebar-menu-button" href="#sm_customers" data-toggle="tab" role="tab"
+                                    aria-controls="sm_customers" aria-selected="true">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervised_user_circle</i>
+                                    <span class="sidebar-menu-text">Customers</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item" data-title="Rewards" data-placement="right"
+                                data-container="body" data-boundary="window">
+                                <a class="sidebar-menu-button" href="#sm_rewards-manage" data-toggle="tab" role="tab"
+                                    aria-controls="sm_rewards-manage" aria-selected="false">
+                                    <i
+                                        class="sidebar-menu-icon sidebar-menu-icon--left material-icons">stars</i>
+                                    <span class="sidebar-menu-text">Rewards</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item " data-title="Packages" data-placement="right"
+                                data-container="body" data-boundary="window">
+                                <a class="sidebar-menu-button" href="#sm_packages" data-toggle="tab" role="tab"
+                                    aria-controls="sm_packages">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">style</i>
+                                    <span class="sidebar-menu-text">Memberships</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item " data-title="Receptionist" data-placement="right"
+                                data-container="body" data-boundary="window">
+                                <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
+                                    aria-controls="sm_receptionist">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                                    <span class="sidebar-menu-text">Receptionist</span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="sidebar sidebar-light sidebar-left flex sidebar-secondary pt-16pt" data-perfect-scrollbar>
+                    <div class="tab-content">
+
+                        <div class="tab-pane" id="sm_receptionist_1">
+                            <div class="sidebar-heading">Account</div>
+                            <ul class="sidebar-menu">
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="edit-account.html">
+                                        <span class="sidebar-menu-text">Edit Account</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="billing.html">Billing</a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="billing-history.html">Payments</a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="login.html">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+                        <div class="tab-pane " id="sm_packages">
+                            <div class="sidebar-heading">Membership Type</div>
+                            <ul class="sidebar-menu">
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="all-packages.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
+                                        <span class="sidebar-menu-text">All Membership Types</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="add-packages.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add_box</span>
+                                        <span class="sidebar-menu-text">Add Membership Type</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="tab-pane  fade active show " id="sm_customers">
+                            <div class="sidebar-heading">Customers</div>
+                            <ul class="sidebar-menu">
+
+
+
+                                <li class="sidebar-menu-item ">
+                                    <a class="sidebar-menu-button " href="all-customers.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">featured_play_list</span>
+                                        <span class="sidebar-menu-text">All customers</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="add-customer.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
+                                        <span class="sidebar-menu-text">Add customer</span>
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+
+
+
+                        <div class="tab-pane " id="sm_rewards-manage">
+                            <div class="sidebar-heading">Rewards</div>
+                            <ul class="sidebar-menu">
+
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="create-reward-locations.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add_location</span>
+                                        <span class="sidebar-menu-text">Create reward locations</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="reward-location-details.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assistant_photo</span>
+                                        <span class="sidebar-menu-text">Reward location details</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="reward-spent-report.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
+                                        <span class="sidebar-menu-text">Reward spent report</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="tab-pane " id="sm_receptionist">
+                            <div class="sidebar-heading">Receptionist </div>
+                            <ul class="sidebar-menu">
+
+
+
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="all-receptionist.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                        <span class="sidebar-menu-text">All receptionist</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="add-receptionist.html">
+                                        <span
+                                            class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
+                                        <span class="sidebar-menu-text">Add receptionist</span>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- // END drawer -->
+
+
+
+
+
+
+    </div>
+
+    <!-- // END Drawer Layout -->
+
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="vendor/popper.min.js"></script>
+    <script src="vendor/bootstrap.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="vendor/perfect-scrollbar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="vendor/material-design-kit.js"></script>
+
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+
+    <!-- Preloader -->
+    <script src="js/preloader.js"></script>
+
+    <!-- Global Settings -->
+    <script src="js/settings.js"></script>
+
+    <!-- Moment.js -->
+    <script src="vendor/moment.min.js"></script>
+    <script src="vendor/moment-range.js"></script>
+
+    <!-- Flatpickr -->
+    <script src="vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="js/flatpickr.js"></script>
+
+
+    <!-- Sweet Alert -->
+    <script src="vendor/sweetalert.min.js"></script>
+    <script src="js/sweetalert.js"></script>
+
+
+    <!-- Highlight.js -->
+    <script src="js/hljs.js"></script>
+
+
+
+    <!-- Chart.js -->
+    <script src="vendor/Chart.min.js"></script>
+    <script src="js/chartjs.js"></script>
+
+    <!-- Chart.js Samples -->
+    <script src="js/page.crm-dashboard.js"></script>
+
+    <!-- List.js -->
+    <script src="vendor/list.min.js"></script>
+    <script src="js/list.js"></script>
+
+    <!-- Tables -->
+    <script src="js/toggle-check-all.js"></script>
+    <script src="js/check-selected-row.js"></script>
+
+    <!-- Sidebar Mini JS -->
+    <script src="js/sidebar-mini.js"></script>
+    <script>
+        (function () {
+            'use strict';
+            // ENABLE sidebar menu tabs
+            $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+            $('.js-sidebar-mini-tabs').on('show.bs.tab', function (e) {
+                $('.js-sidebar-mini-tabs > .active').removeClass('active')
+                $(e.target).parent().addClass('active')
+            })
+        })()
+    </script>
+
+</body>
+
+</html>

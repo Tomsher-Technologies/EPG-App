@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.admin.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-
+@section('content')
     <form action="{{ route('login') }}" method="post">
         @csrf
-        <input type="email" name="email" id="">
-        <input type="password" name="password" id="">
+        <input type="email" name="email" value="admin@epg.com" id="">
+        <input type="password" name="password" value="password" id="">
         <input type="submit" value="Login">
     </form>
-
-</body>
-
-</html>
+@endsection
