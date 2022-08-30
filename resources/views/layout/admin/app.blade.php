@@ -42,7 +42,18 @@
         </div>
 
         <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
-            @yield('content')
+           
+            <div class="mdk-drawer-layout__content page-content">
+
+                @include('admin.parts.header')
+               
+                @yield('content')
+
+                @include('admin.parts.footer')
+
+            </div> 
+
+            @include('admin.parts.sidebar')
         </div>
 
         <script src="{{ getAdminAsset('vendor/popper.min.js') }}"></script>
@@ -50,7 +61,7 @@
         <script src="{{ getAdminAsset('vendor/perfect-scrollbar.min.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/dom-factory.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/material-design-kit.js') }}"></script>
-        {{-- <script src="{{ getAdminAsset('js/app.js') }}"></script>
+        <script src="{{ getAdminAsset('js/app.js') }}"></script>
         <script src="{{ getAdminAsset('js/settings.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/moment.min.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/moment-range.js') }}"></script>
@@ -58,15 +69,15 @@
         <script src="{{ getAdminAsset('js/flatpickr.js') }}"></script> --}}
         <script src="{{ getAdminAsset('vendor/sweetalert.min.js') }}"></script>
         <script src="{{ getAdminAsset('js/sweetalert.js') }}"></script>
-        {{-- <script src="{{ getAdminAsset('js/hljs.js') }}"></script> --}}
-        {{-- <script src="{{ getAdminAsset('vendor/Chart.min.js') }}"></script> --}}
-        {{-- <script src="{{ getAdminAsset('js/chartjs.js') }}"></script> --}}
-        {{-- <script src="{{ getAdminAsset('js/page.crm-dashboard.js') }}"></script> --}}
-        {{-- <script src="{{ getAdminAsset('vendor/list.min.js') }}"></script>
+        <script src="{{ getAdminAsset('js/hljs.js') }}"></script>
+        <script src="{{ getAdminAsset('vendor/Chart.min.js') }}"></script>
+        <script src="{{ getAdminAsset('js/chartjs.js') }}"></script>
+        <script src="{{ getAdminAsset('js/page.crm-dashboard.js') }}"></script>
+        <script src="{{ getAdminAsset('vendor/list.min.js') }}"></script>
         <script src="{{ getAdminAsset('js/list.js') }}"></script>
         <script src="{{ getAdminAsset('js/toggle-check-all.js') }}"></script>
         <script src="{{ getAdminAsset('js/check-selected-row.js') }}"></script>
-        <script src="{{ getAdminAsset('js/sidebar-mini.js') }}"></script> --}}
+        <script src="{{ getAdminAsset('js/sidebar-mini.js') }}"></script>
         <script>
             (function() {
                 "use strict";

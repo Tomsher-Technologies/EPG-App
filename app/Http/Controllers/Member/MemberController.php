@@ -17,19 +17,28 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $filter_search = $request->search ?? "";
-
-        $members = Member::select('*');
-        if ($filter_search) {
-            $members->where('name', 'LIKE', '%' . $filter_search . '%')
-                ->orWhere('email', 'LIKE', '%' . $filter_search . '%')
-                ->orWhere('phone', 'LIKE', '%' . $filter_search . '%');
-        }
-        $members->with('package');
-        dd($members->get());
+        return view('admin.members.index');
     }
+    // public function index(Request $request)
+    // {
+    //     $filter_search = $request->search ?? "";
+
+    //     $query = Member::select('*');
+    //     if ($filter_search) {
+    //         $query->where('name', 'LIKE', '%' . $filter_search . '%')
+    //             ->orWhere('email', 'LIKE', '%' . $filter_search . '%')
+    //             ->orWhere('phone', 'LIKE', '%' . $filter_search . '%');
+    //     }
+    //     $query->with('package');
+
+    //     $members = $query->get();
+
+    //     // dd($members);
+    //     return view('admin.members.index')
+    //         ->with(['members' => $members]);
+    // }
 
     /**
      * Show the form for creating a new resource.

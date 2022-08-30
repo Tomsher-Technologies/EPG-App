@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $membersCount = Cache::rememberForever('memberCount', function () {
+            return Member::count();
+        });
+        return view('admin.dashboard')
+            ->with([
+                'membersCount' => $membersCount
+            ]);
     }
 }
