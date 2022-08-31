@@ -32402,6 +32402,10 @@ label {
     border-radius: 20rem
 }
 
+[dir] .border-rounded20 {
+    border-radius: 20px;
+}
+
 [dir] .form-control-flush {
     padding: 0;
     border-width: 0
