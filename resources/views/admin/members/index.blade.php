@@ -12,7 +12,7 @@
 @endsection
 @push('header')
     @livewireStyles
+    @livewireScripts
 @endpush
 @push('footer')
-    @livewireScripts
 @endpush
