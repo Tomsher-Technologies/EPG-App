@@ -12,9 +12,13 @@
             </li>
         @else
             <li class="page-item">
-                <a dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}"
-                    wire:click="previousPage('{{ $paginator->getPageName() }}')" wire:loading.attr="disabled"
-                    aria-label="@lang('pagination.previous')" class="page-link" aria-label="Previous">
+
+    
+                <a 
+                dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}" 
+                wire:loading.attr="disabled" rel="prev" aria-label="@lang('pagination.previous')"
+                wire:click="previousPage('{{ $paginator->getPageName() }}')"
+                class="page-link">
                     <span aria-hidden="true" class="material-icons">chevron_left</span>
                     <span>Prev</span>
                 </a>

@@ -13,9 +13,21 @@ class Listing extends Component
 
     public $search = '';
 
+    public $location = '';
+
+    public $currentStatus;
+
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function toggleStatus($id)
+    {
+        $member = Member::where('id', $id)->first();
+        $member->update([
+            'status' => !$member->status
+        ]);
     }
 
     public function render()
@@ -32,5 +44,10 @@ class Listing extends Component
     public function paginationView()
     {
         return 'admin.parts.custom-pagination-links';
+    }
+
+    public function deleteMember($id)
+    {
+        Member::destroy($id);
     }
 }
