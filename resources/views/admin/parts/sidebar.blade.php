@@ -20,7 +20,8 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-menu-item" data-title="Customers" data-placement="right" data-boundary="window">
+                    <li class="sidebar-menu-item {{ request()->routeIs('members*') ? 'active' : '' }}"
+                        data-title="Customers" data-placement="right" data-boundary="window">
                         <a class="sidebar-menu-button" href="#sm_customers" data-toggle="tab" role="tab"
                             aria-controls="sm_customers" aria-selected="true">
                             <i
