@@ -7,11 +7,11 @@
                 <input wire:model="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
                     id="inlineFormFilterBy" placeholder="Search ..." />
                 <label class="sr-only" for="inlineFormRole">Filter</label>
-                <select id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                    <option value="">All Locations</option>
-                    <option value="">Pool</option>
-                    <option value="">Gym</option>
-                    <option value="">Spa</option>
+                <select wire:model="package" wire:change="changePackage" id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                    <option value="0">All Packages</option>
+                    @foreach ($packages as $package)
+                        <option value="{{ $package->id }}">{{ $package->name }}</option>
+                    @endforeach
                 </select>
             </form>
         </div>
