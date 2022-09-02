@@ -16,7 +16,7 @@ class Listing extends Component
 
     public $packages;
 
-    public $package = 2;
+    public $package = 0;
 
     public $currentStatus;
 
@@ -45,13 +45,23 @@ class Listing extends Component
 
     public function render()
     {
-        return view('livewire.member.listing', [
-            'members' => Member::where('package_id',  (int)$this->package)
-                ->where('name', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('phone', 'LIKE', '%' . $this->search . '%')
 
-                ->paginate(10),
+        $query = Member::latest();
+
+        if ((int)$this->package !== 0) {
+            $query->where('package_id', (int)$this->package);
+        }
+
+        if ($this->search !== '') {
+            $query->where('name', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('phone', 'LIKE', '%' . $this->search . '%');
+        }
+
+        $members = $query->paginate(10);
+
+        return view('livewire.member.listing', [
+            'members' => $members,
         ]);
     }
 
