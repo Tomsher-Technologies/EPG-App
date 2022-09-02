@@ -17,4 +17,9 @@ class Member extends Model
     {
         return $this->belongsTo(Package::class);
     }
+
+    function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

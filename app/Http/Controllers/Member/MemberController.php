@@ -62,11 +62,6 @@ class MemberController extends Controller
      */
     public function store(StoreMemberRequest $request)
     {
-        // $member = Member::create($request->merge([
-        //     'status' => true,
-        //     'total_earned' => 0,
-        //     'total_redeemed' => 0,
-        // ])->all());
     }
 
     /**
@@ -77,6 +72,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
+        $member->load('transaction');
         return view('admin.members.show')->with([
             'member' => $member
         ]);
