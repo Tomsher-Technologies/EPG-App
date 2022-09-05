@@ -4,14 +4,14 @@
         <div class="card-header">
             <form class="form-inline">
                 <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
-                <input type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0" id="inlineFormFilterBy"
-                    placeholder="Search ..." />
+                <input wire:model="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
+                    id="inlineFormFilterBy" placeholder="Search ..." />
                 <label class="sr-only" for="inlineFormRole">Filter</label>
-                <select id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                    <option value="">All Locations</option>
-                    <option value="">Pool</option>
-                    <option value="">Gym</option>
-                    <option value="">Spa</option>
+                <select wire:model="package" wire:change="changePackage" id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                    <option value="0">All Packages</option>
+                    @foreach ($packages as $package)
+                        <option value="{{ $package->id }}">{{ $package->name }}</option>
+                    @endforeach
                 </select>
             </form>
         </div>
@@ -45,7 +45,6 @@
                 @foreach ($members as $member)
                     <tr>
                         <td class="pr-0">{{ $loop->iteration }}</td>
-
                         <td>
                             <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
                                 <div class="avatar avatar-sm mr-8pt">
@@ -86,44 +85,60 @@
                         <td>
                             <div class="ml-auto mb-2 mb-sm-0 custom-control-inline mr-0">
                                 <div class="custom-control custom-checkbox-toggle ml-8pt">
-                                    <input checked="" type="checkbox" id="active{{ $loop->iteration }}"
+                                    {{-- <form action="" class="s-inline"> --}}
+                                    <input wire:click="toggleStatus({{ $member->id }})"
+                                        {{ $member->status == 1 ? 'checked' : '' }} value="{{ $member->id }}"
+                                        type="checkbox" id="active{{ $loop->iteration }}"
                                         class="custom-control-input" />
                                     <label class="custom-control-label"
                                         for="active{{ $loop->iteration }}">Active</label>
+                                    {{-- </form> --}}
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <button onclick="location.href='add-customer.html'" type="button"
-                                class="btn btn-secondary">
+                            <a type="button" class="btn btn-secondary" href="{{ route('members.edit', $member) }}">
                                 <i class="material-icons">mode_edit</i>
-                            </button>
-
-                            <button class="btn btn-accent" data-toggle="swal" data-swal-title="Are you sure?"
-                                data-swal-text="You will not be able to recover this imaginary file!"
-                                data-swal-type="warning" data-swal-show-cancel-button="true"
-                                data-swal-confirm-button-text="Yes, delete it!"
-                                data-swal-confirm-cb="#swal-confirm-delete" data-swal-close-on-confirm="false">
+                            </a>
+                            <button class="btn btn-accent" type="submit"
+                                wire:click="$emit('triggerDelete',{{ $member->id }})">
                                 <i class="material-icons">delete_forever</i>
                             </button>
-                            <div id="swal-confirm-delete" class="d-none" data-swal-type="success"
-                                data-swal-title="Deleted!" data-swal-text="Your imaginary file has been deleted.">
-                            </div>
-
-                            <button onclick="location.href='customers-single.html'" type="button"
-                                class="btn btn-primary">
+                            <a type="button" class="btn btn-primary" href="{{ route('members.show', $member) }}">
                                 <i class="material-icons">pageview</i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
     <div class="card-footer p-8pt">
-
         {{ $members->links() }}
-
     </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            @this.on('triggerDelete', id => {
+                Swal.fire({
+                    title: 'Are You Sure?',
+                    text: 'Member record will be deleted!',
+                    icon: "error",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#aaa',
+                    confirmButtonText: 'Delete!'
+                }).then((result) => {
+                    if (result.value) {
+                        @this.call('deleteMember', id)
+                        Swal.fire({
+                            title: 'Member deleted successfully!',
+                            icon: 'success'
+                        });
+                    }
+                });
+            });
+        })
+    </script>
+
 </div>

@@ -47,11 +47,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $packages = Package::whereStatus(true)->get();
-        return view('admin.members.create')
-            ->with([
-                'packages' => $packages
-            ]);
+        return view('admin.members.create');
     }
 
     /**
@@ -62,11 +58,6 @@ class MemberController extends Controller
      */
     public function store(StoreMemberRequest $request)
     {
-        $member = Member::create($request->merge([
-            'status' => true,
-            'total_earned' => 0,
-            'total_redeemed' => 0,
-        ])->all());
     }
 
     /**
@@ -77,7 +68,10 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        $member->load(['transaction', 'transaction.location']);
+        return view('admin.members.show')->with([
+            'member' => $member
+        ]);
     }
 
     /**
@@ -88,7 +82,9 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        return view('admin.members.edit')->with([
+            'member' => $member
+        ]);
     }
 
     /**
