@@ -56,7 +56,6 @@
 
     <script>
         window.addEventListener('memberUpdated', event => {
-            console.log('asdsd');
             Swal.fire({
                 title: 'Member updated successfully!',
                 icon: 'success'

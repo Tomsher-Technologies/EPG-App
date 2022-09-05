@@ -47,11 +47,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $packages = Package::whereStatus(true)->get();
-        return view('admin.members.create')
-            ->with([
-                'packages' => $packages
-            ]);
+        return view('admin.members.create');
     }
 
     /**
@@ -72,7 +68,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        $member->load('transaction');
+        $member->load(['transaction', 'transaction.location']);
         return view('admin.members.show')->with([
             'member' => $member
         ]);
