@@ -45,7 +45,7 @@
                             <span class="sidebar-menu-text">Memberships</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item" data-title="Receptionist" data-placement="right" data-container="body"
+                    <li class="sidebar-menu-item {{ request()->routeIs('receptionist*') ? 'active' : '' }}" data-title="Receptionist" data-placement="right" data-container="body"
                         data-boundary="window">
                         <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
                             aria-controls="sm_receptionist">
@@ -148,7 +148,7 @@
                     <div class="sidebar-heading">Receptionist</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="all-receptionist.html">
+                            <a class="sidebar-menu-button" href="{{ route('receptionist.index') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
                                 <span class="sidebar-menu-text">All receptionist</span>

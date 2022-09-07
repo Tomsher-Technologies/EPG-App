@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Livewire\Location\Receptionist;
+
+use App\Models\Location\Location;
+use App\Models\User;
+use Livewire\Component;
+use Livewire\WithPagination;
+
+class Listing extends Component
+{
+    use WithPagination;
+
+    public $search = '';
+    public $locations;
+    public $location = 0;
+    public $currentStatus;
+
+    public function mount()
+    {
+        $this->locations = Location::all();
+    }
+
+    public function toggleStatus($id)
+    {
+        $member = User::where('id', $id)->first();
+        $member->update([
+            'status' => !$member->status
+        ]);
+        $this->dispatchBrowserEvent('statusChange', ['status' => $member->status]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function render()
+    {
+        $query = User::whereIs('receptionist')->latest();
+
+        if ($this->search !== '') {
+            $query->where('name', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $this->search . '%');
+        }
+
+        $receptionist = $query->paginate(10);
+
+        return view('livewire.location.receptionist.listing', [
+            'receptionists' => $receptionist,
+        ]);
+    }
+
+    public function paginationView()
+    {
+        return 'admin.parts.custom-pagination-links';
+    }
+
+    public function deleteMember($id)
+    {
+        if (User::destroy($id)) {
+            $this->dispatchBrowserEvent('modelDeleted');
+        } else {
+            $this->dispatchBrowserEvent('modelDeletedFailed');
+        }
+    }
+}
