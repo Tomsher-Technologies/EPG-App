@@ -155,7 +155,7 @@
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="add-receptionist.html">
+                            <a class="sidebar-menu-button" href="{{ route('receptionist.create') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
                                 <span class="sidebar-menu-text">Add receptionist</span>

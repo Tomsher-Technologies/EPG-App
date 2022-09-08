@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Location;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Receptionist extends Controller
@@ -55,9 +56,12 @@ class Receptionist extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $receptionist)
     {
-        //
+        return view('admin.location.receptionist.edit')
+            ->with([
+                'receptionist' => $receptionist
+            ]);
     }
 
     /**

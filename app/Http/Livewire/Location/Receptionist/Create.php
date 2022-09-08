@@ -25,7 +25,7 @@ class Create extends Component
         return [
             'name' => 'required',
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
         ];
     }
 
@@ -59,7 +59,7 @@ class Create extends Component
         $this->dispatchBrowserEvent('memberUpdated');
     }
 
-    public function mount($location_id = 4)
+    public function mount($location_id = 0)
     {
         $this->allLocation = Location::whereStatus(true)->get();
         $this->location = $location_id;
