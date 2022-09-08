@@ -24,7 +24,7 @@ class Receptionist extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.location.receptionist.create');
     }
 
     /**

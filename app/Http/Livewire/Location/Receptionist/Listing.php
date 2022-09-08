@@ -62,7 +62,8 @@ class Listing extends Component
 
     public function deleteMember($id)
     {
-        if (User::destroy($id)) {
+        $status = User::where('id', $id)->first()->delete();
+        if ($status) {
             $this->dispatchBrowserEvent('modelDeleted');
         } else {
             $this->dispatchBrowserEvent('modelDeletedFailed');

@@ -16,7 +16,7 @@ class DashboardController extends Controller
             return Member::count();
         });
 
-        $stafCount = Cache::rememberForever('recptionistCount',function(){
+        $stafCount = Cache::rememberForever('recptionistCount', function () {
             return User::whereIs('receptionist')->count();
         });
 
