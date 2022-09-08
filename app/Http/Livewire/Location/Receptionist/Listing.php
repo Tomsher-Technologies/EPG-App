@@ -37,7 +37,11 @@ class Listing extends Component
 
     public function render()
     {
-        $query = User::whereIs('receptionist')->latest();
+        $query = User::whereIs('receptionist')->with('location')->latest();
+
+        if ((int)$this->location !== 0) {
+            $query->where('location_id', (int)$this->location);
+        }
 
         if ($this->search !== '') {
             $query->where('name', 'LIKE', '%' . $this->search . '%')
@@ -63,5 +67,10 @@ class Listing extends Component
         } else {
             $this->dispatchBrowserEvent('modelDeletedFailed');
         }
+    }
+
+    public function changeLocation()
+    {
+        $this->render();
     }
 }

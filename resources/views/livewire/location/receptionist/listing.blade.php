@@ -61,7 +61,7 @@
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                Location
+                                {{ $receptionist->location ? $receptionist->location->name : "" }}
                             </div>
                         </td>
                         <td>
@@ -129,11 +129,11 @@
         })
         window.addEventListener('statusChange', e => {
             $status = "Activated";
-            if(e.detail.status == false){
+            if (e.detail.status == false) {
                 $status = "Deactivated";
             }
             Swal.fire({
-                title: 'Receptionist ' + $status ,
+                title: 'Receptionist ' + $status,
                 icon: 'success'
             });
         })
