@@ -53,6 +53,14 @@
                             <span class="sidebar-menu-text">Receptionist</span>
                         </a>
                     </li>
+                    <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}" data-title="Locations" data-placement="right" data-container="body"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_location" data-toggle="tab" role="tab"
+                            aria-controls="sm_location">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                            <span class="sidebar-menu-text">Locations</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -140,6 +148,25 @@
                             <a class="sidebar-menu-button" href="reward-spent-report.html">
                                 <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
                                 <span class="sidebar-menu-text">Reward spent report</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="sm_location">
+                    <div class="sidebar-heading">Locations</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('location.index') }}">
+                                <span
+                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
+                                <span class="sidebar-menu-text">All Locations</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('location.create') }}">
+                                <span
+                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
+                                <span class="sidebar-menu-text">Add Locations</span>
                             </a>
                         </li>
                     </ul>
