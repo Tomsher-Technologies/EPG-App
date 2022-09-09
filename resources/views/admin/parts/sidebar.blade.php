@@ -45,12 +45,20 @@
                             <span class="sidebar-menu-text">Memberships</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item" data-title="Receptionist" data-placement="right" data-container="body"
+                    <li class="sidebar-menu-item {{ request()->routeIs('receptionist*') ? 'active' : '' }}" data-title="Receptionist" data-placement="right" data-container="body"
                         data-boundary="window">
                         <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
                             aria-controls="sm_receptionist">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
                             <span class="sidebar-menu-text">Receptionist</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}" data-title="Locations" data-placement="right" data-container="body"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_location" data-toggle="tab" role="tab"
+                            aria-controls="sm_location">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                            <span class="sidebar-menu-text">Locations</span>
                         </a>
                     </li>
                 </ul>
@@ -144,18 +152,37 @@
                         </li>
                     </ul>
                 </div>
+                <div class="tab-pane" id="sm_location">
+                    <div class="sidebar-heading">Locations</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('location.index') }}">
+                                <span
+                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
+                                <span class="sidebar-menu-text">All Locations</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('location.create') }}">
+                                <span
+                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
+                                <span class="sidebar-menu-text">Add Locations</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="tab-pane" id="sm_receptionist">
                     <div class="sidebar-heading">Receptionist</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="all-receptionist.html">
+                            <a class="sidebar-menu-button" href="{{ route('receptionist.index') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
                                 <span class="sidebar-menu-text">All receptionist</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="add-receptionist.html">
+                            <a class="sidebar-menu-button" href="{{ route('receptionist.create') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
                                 <span class="sidebar-menu-text">Add receptionist</span>
