@@ -83,7 +83,7 @@
                                 <div class="card-header pb-0 border-0 d-flex">
                                     <div class="flex">
                                         <div class="h2 mb-0">
-                                            10
+                                            {{ $stafCount }}
                                         </div>
                                         <p class="card-title">
                                             STAFFS
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <a href="" class="btn btn-sm btn-outline-secondary">View all staffs</a>
+                                        <a href="{{ route('receptionist.index') }}" class="btn btn-sm btn-outline-secondary">View all staffs</a>
                                     </div>
                                 </div>
                             </div>

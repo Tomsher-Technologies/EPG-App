@@ -1,3 +1,11 @@
+<style>
+    .page-link{
+        cursor: pointer;
+    }
+    .page-link span{
+        user-select: none;
+    }
+</style>
 @if ($paginator->hasPages())
     @php(isset($this->numberOfPaginatorsRendered[$paginator->getPageName()]) ? $this->numberOfPaginatorsRendered[$paginator->getPageName()]++ : ($this->numberOfPaginatorsRendered[$paginator->getPageName()] = 1))
 
@@ -12,13 +20,9 @@
             </li>
         @else
             <li class="page-item">
-
-    
-                <a 
-                dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}" 
-                wire:loading.attr="disabled" rel="prev" aria-label="@lang('pagination.previous')"
-                wire:click="previousPage('{{ $paginator->getPageName() }}')"
-                class="page-link">
+                <a dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}"
+                     rel="prev" aria-label="@lang('pagination.previous')"
+                    wire:click="previousPage('{{ $paginator->getPageName() }}')" class="page-link">
                     <span aria-hidden="true" class="material-icons">chevron_left</span>
                     <span>Prev</span>
                 </a>
@@ -56,7 +60,7 @@
             <li class="page-item">
                 <a class="page-link"
                     dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}"
-                    wire:click="nextPage('{{ $paginator->getPageName() }}')" wire:loading.attr="disabled"
+                    wire:click="nextPage('{{ $paginator->getPageName() }}')"
                     rel="next" aria-label="@lang('pagination.next')">
                     <span>Next</span>
                     <span aria-hidden="true" class="material-icons">chevron_right</span>
