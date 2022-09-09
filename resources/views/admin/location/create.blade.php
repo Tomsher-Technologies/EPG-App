@@ -3,9 +3,9 @@
 @section('content')
     <div class="page-section container page__container">
         <div class="page-separator">
-            <div class="page-separator__text">Create new receptionist</div>
+            <div class="page-separator__text">Create new location</div>
         </div>
-        @livewire('location.receptionist.create', ['location_id' => 4])
+        @livewire('location.create')
     </div>
 @endsection
 @push('header')
