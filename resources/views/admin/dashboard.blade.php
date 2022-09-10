@@ -19,11 +19,11 @@
                 </div>
             </div>
 
-            <div class="row" role="tablist">
+            {{-- <div class="row" role="tablist">
                 <div class="col-auto">
                     <a href="" class="btn btn-outline-secondary">New Report</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                                             CUSTOMERS
                                         </p>
                                     </div>
-                                    <i class="material-icons text-50">more_horiz</i>
+                                    {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
@@ -63,16 +63,16 @@
                             <div class="card">
                                 <div class="card-header pb-0 border-0 d-flex">
                                     <div class="flex">
-                                        <div class="h2 mb-0">7</div>
+                                        <div class="h2 mb-0">{{ $locationCount }}</div>
                                         <p class="card-title">
                                             LOCATIONS
                                         </p>
                                     </div>
-                                    <i class="material-icons text-50">more_horiz</i>
+                                    {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <a href="" class="btn btn-sm btn-outline-secondary">View all locations</a>
+                                        <a href="{{ route('location.index') }}" class="btn btn-sm btn-outline-secondary">View all locations</a>
                                     </div>
                                 </div>
                             </div>
@@ -89,11 +89,12 @@
                                             STAFFS
                                         </p>
                                     </div>
-                                    <i class="material-icons text-50">more_horiz</i>
+                                    {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <a href="{{ route('receptionist.index') }}" class="btn btn-sm btn-outline-secondary">View all staffs</a>
+                                        <a href="{{ route('receptionist.index') }}"
+                                            class="btn btn-sm btn-outline-secondary">View all staffs</a>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +118,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+                                    {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                 </div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <div class="mb-4pt">
@@ -176,7 +177,7 @@
                                         </div>
                                         <div class="col-auto ml-sm-auto">
                                             <div class="p-card-header pl-0">
-                                                <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+                                                {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -197,135 +198,92 @@
 
             <div class="page-separator">
                 <div class="page-separator__text">
-                    Recently added
+                    Recently added members
                 </div>
             </div>
 
-            <div class="card mb-0">
-                <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-date"
-                    data-lists-sort-desc="true"
-                    data-lists-values='["js-lists-values-count","js-lists-values-name", "js-lists-values-company", "js-lists-values-phone", "js-lists-values-date"]'>
-                    <table class="table mb-0 thead-border-top-0 table-nowrap">
-                        <thead>
-                            <tr>
-                                <th style="width: 18px" class="pr-0">
-                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">ID</a>
-                                </th>
+            @if ($recentMembers)
+                <div class="card mb-0">
+                    <div class="table-responsive" data-toggle="lists">
+                        <table class="table mb-0 thead-border-top-0 table-nowrap">
+                            <thead>
+                                <tr>
+                                    <th style="width: 18px" class="pr-0">
+                                        <a href="javascript:void(0)" 
+                                            data-sort="js-lists-values-count">ID</a>
+                                    </th>
 
-                                <th>
-                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Name</a>
-                                </th>
+                                    <th>
+                                        <a href="javascript:void(0)" 
+                                            data-sort="js-lists-values-name">Name</a>
+                                    </th>
 
-                                <th style="width: 150px">
-                                    <a href="javascript:void(0)" class="sort"
-                                        data-sort="js-lists-values-company">EARNED POINTS</a>
-                                </th>
+                                    <th style="width: 150px">
+                                        <a href="javascript:void(0)" 
+                                            data-sort="js-lists-values-company">EARNED POINTS</a>
+                                    </th>
 
-                                <th style="width: 48px">
-                                    <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">USED
-                                        POINTS</a>
-                                </th>
-
-                                <th style="width: 120px">
-                                    <a href="javascript:void(0)" class="sort"
-                                        data-sort="js-lists-values-date">ACTION</a>
-                                </th>
-                                <th style="width: 24px"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="list" id="contacts">
-                            <tr>
-                                <td class="pr-0">1</td>
-
-                                <td>
-                                    <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
-                                        <div class="avatar avatar-sm mr-8pt">
-                                            <span class="avatar-title rounded-circle">BN</span>
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0">
-                                                    <strong class="js-lists-values-name">Billy
-                                                        Nunez</strong>
-                                                </p>
-                                                <small
-                                                    class="js-lists-values-email text-50">annabell.kris@yahoo.com</small>
+                                    <th style="width: 48px">
+                                        <a href="javascript:void(0)"
+                                            data-sort="js-lists-values-phone">USED
+                                            POINTS</a>
+                                    </th>
+                                    <th style="width: 24px"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="list" id="contacts">
+                                @foreach ($recentMembers as $member)
+                                    <tr>
+                                        <td class="pr-0">{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
+                                                <div class="avatar avatar-sm mr-8pt">
+                                                    <span
+                                                        class="avatar-title rounded-circle">{{ getInitials($member->name) }}</span>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="mb-0">
+                                                            <strong class="js-lists-values-name">
+                                                                {{ $member->name }}
+                                                            </strong>
+                                                        </p>
+                                                        <small class="js-lists-values-email text-50">
+                                                            {{ $member->email }}
+                                                        </small>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
 
-                                <td>
-                                    <div class="media align-items-center" style="white-space: nowrap">
-                                        <div class="avatar avatar-sm mr-8pt">
-                                            <span class="avatar-title rounded bg-warning">200</span>
-                                        </div>
-                                    </div>
-                                </td>
+                                        <td>
+                                            <div class="media align-items-center" style="white-space: nowrap">
+                                                <div class="avatar avatar-sm mr-8pt">
+                                                    <span class="avatar-title rounded bg-warning">
+                                                        {{ (int) $member->member_details->total_earned }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
 
-                                <td>
-                                    <div class="media align-items-center" style="white-space: nowrap">
-                                        <div class="avatar avatar-sm mr-8pt">
-                                            <span class="avatar-title rounded bg-primary text-white">120</span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <button onclick="location.href='customers-edit.html'" type="button"
-                                        class="btn btn-secondary">
-                                        <i class="material-icons">mode_edit</i>
-                                    </button>
-
-                                    <button class="btn btn-accent" data-toggle="swal" data-swal-title="Are you sure?"
-                                        data-swal-text="You will not be able to recover this imaginary file!"
-                                        data-swal-type="warning" data-swal-show-cancel-button="true"
-                                        data-swal-confirm-button-text="Yes, delete it!"
-                                        data-swal-confirm-cb="#swal-confirm-delete" data-swal-close-on-confirm="false">
-                                        <i class="material-icons">delete_forever</i>
-                                    </button>
-
-                                    <div id="swal-confirm-delete" class="d-none" data-swal-type="success"
-                                        data-swal-title="Deleted!" data-swal-text="Your imaginary file has been deleted.">
-                                    </div>
-
-                                    <button onclick="location.href='customers-single.html'" type="button"
-                                        class="btn btn-primary">
-                                        <i class="material-icons">pageview</i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        <td>
+                                            <div class="media align-items-center" style="white-space: nowrap">
+                                                <div class="avatar avatar-sm mr-8pt">
+                                                    <span class="avatar-title rounded bg-primary text-white">
+                                                        {{ (int) $member->member_details->total_redeemed }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+            @endif
 
-                <div class="card-footer p-8pt">
-                    <ul class="pagination justify-content-start pagination-xsm m-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true" class="material-icons">chevron_left</span>
-                                <span>Prev</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Page 1">
-                                <span>1</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Page 2">
-                                <span>2</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span>Next</span>
-                                <span aria-hidden="true" class="material-icons">chevron_right</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
     </div>
 @endsection

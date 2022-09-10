@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Location\Location;
-use App\Models\Member\Member;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Member::class);
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Location::class);
             $table->foreignId('receptionist_id')->references('id')->on('users');
             $table->decimal('points', $precision = 8, $scale = 2);

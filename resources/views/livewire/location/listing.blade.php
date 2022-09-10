@@ -1,13 +1,12 @@
 <div class="card mb-0">
-    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
-        data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
-    
+    <div class="table-responsive" >
+
         <div class="card-header">
             <form class="form-inline">
                 <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
                 <input wire:model="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
                     id="inlineFormFilterBy" placeholder="Search ..." />
-                
+
             </form>
         </div>
 
@@ -15,16 +14,16 @@
             <thead>
                 <tr>
                     <th class="pr-0">
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">ID</a>
+                        <a href="javascript:void(0)">ID</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Name</a>
+                        <a href="javascript:void(0)">Name</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">Status</a>
+                        <a href="javascript:void(0)">Status</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">ACTION</a>
+                        <a href="javascript:void(0)">ACTION</a>
                     </th>
                 </tr>
             </thead>
@@ -50,9 +49,9 @@
                                 <div class="custom-control custom-checkbox-toggle ml-8pt">
                                     {{-- <form action="" class="s-inline"> --}}
                                     <input wire:click="toggleStatus({{ $location->id }})"
-                                        {{ $location->status == 1 ? 'checked' : '' }}
-                                        value="{{ $location->id }}" type="checkbox"
-                                        id="active{{ $loop->iteration }}" class="custom-control-input" />
+                                        {{ $location->status == 1 ? 'checked' : '' }} value="{{ $location->id }}"
+                                        type="checkbox" id="active{{ $loop->iteration }}"
+                                        class="custom-control-input" />
                                     <label class="custom-control-label"
                                         for="active{{ $loop->iteration }}">Active</label>
                                     {{-- </form> --}}
@@ -60,8 +59,7 @@
                             </div>
                         </td>
                         <td>
-                            <a type="button" class="btn btn-secondary"
-                                href="{{ route('location.edit', $location) }}">
+                            <a type="button" class="btn btn-secondary" href="{{ route('location.edit', $location) }}">
                                 <i class="material-icons">mode_edit</i>
                             </a>
                             <button class="btn btn-accent" type="submit"

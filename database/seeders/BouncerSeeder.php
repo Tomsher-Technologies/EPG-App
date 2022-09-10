@@ -27,9 +27,14 @@ class BouncerSeeder extends Seeder
             'name' => 'receptionist',
             'title' => 'Receptionist',
         ]);
+        $admin = Bouncer::role()->firstOrCreate([
+            'name' => 'member',
+            'title' => 'Member',
+        ]);
 
-        // Bouncer::allow('superadmin')->everything();
-        // $user = User::whereId(1)->first();
-        // Bouncer::assign('superadmin')->to($user);
+        $user = User::whereId(1)->first();
+        Bouncer::assign('superadmin')->to($user);
+        Bouncer::allow('superadmin')->everything();
+        
     }
 }

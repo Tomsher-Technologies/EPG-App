@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use App\Models\Member\Member;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Location\Location;
 use App\Models\Location\Package;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -21,24 +21,6 @@ class MemberController extends Controller
     {
         return view('admin.members.index');
     }
-    // public function index(Request $request)
-    // {
-    //     $filter_search = $request->search ?? "";
-
-    //     $query = Member::select('*');
-    //     if ($filter_search) {
-    //         $query->where('name', 'LIKE', '%' . $filter_search . '%')
-    //             ->orWhere('email', 'LIKE', '%' . $filter_search . '%')
-    //             ->orWhere('phone', 'LIKE', '%' . $filter_search . '%');
-    //     }
-    //     $query->with('package');
-
-    //     $members = $query->get();
-
-    //     // dd($members);
-    //     return view('admin.members.index')
-    //         ->with(['members' => $members]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -66,9 +48,9 @@ class MemberController extends Controller
      * @param  \App\Models\Member\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(User $member)
     {
-        $member->load(['transaction', 'transaction.location']);
+        $member->load(['transaction', 'transaction.location', 'member_details']);
         return view('admin.members.show')->with([
             'member' => $member
         ]);
@@ -80,8 +62,9 @@ class MemberController extends Controller
      * @param  \App\Models\Member\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(User $member)
     {
+        $member->load(['member_details']);
         return view('admin.members.edit')->with([
             'member' => $member
         ]);
@@ -94,7 +77,7 @@ class MemberController extends Controller
      * @param  \App\Models\Member\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMemberRequest $request, Member $member)
+    public function update(UpdateMemberRequest $request, User $member)
     {
         //
     }
@@ -105,7 +88,7 @@ class MemberController extends Controller
      * @param  \App\Models\Member\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy(User $member)
     {
         //
     }
