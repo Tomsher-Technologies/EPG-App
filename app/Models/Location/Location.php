@@ -29,4 +29,9 @@ class Location extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(LocationCategory::class);
+    }
 }

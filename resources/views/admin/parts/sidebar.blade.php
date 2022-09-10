@@ -26,7 +26,7 @@
                             aria-controls="sm_customers" aria-selected="true">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervised_user_circle</i>
-                            <span class="sidebar-menu-text">Customers</span>
+                            <span class="sidebar-menu-text">Members</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item" data-title="Rewards" data-placement="right" data-container="body"
@@ -107,21 +107,21 @@
                     </ul>
                 </div>
 
-                <div class="tab-pane fade active show" id="sm_customers">
-                    <div class="sidebar-heading">Customers</div>
+                <div class="tab-pane" id="sm_customers">
+                    <div class="sidebar-heading">Members</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{{ route('members.index') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">featured_play_list</span>
-                                <span class="sidebar-menu-text">All customers</span>
+                                <span class="sidebar-menu-text">All Members</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{{ route('members.create') }}">
                                 <span
                                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
-                                <span class="sidebar-menu-text">Add customer</span>
+                                <span class="sidebar-menu-text">Add Members</span>
                             </a>
                         </li>
                     </ul>

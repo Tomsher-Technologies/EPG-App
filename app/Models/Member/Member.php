@@ -3,6 +3,7 @@
 namespace App\Models\Member;
 
 use App\Models\Location\Package;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Wildside\Userstamps\Userstamps;
@@ -13,13 +14,14 @@ class Member extends Model
 
     protected $guarded = ['id'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     function package()
     {
         return $this->belongsTo(Package::class);
     }
 
-    function transaction()
-    {
-        return $this->hasMany(Transaction::class);
-    }
 }

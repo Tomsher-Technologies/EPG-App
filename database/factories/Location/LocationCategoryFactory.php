@@ -4,7 +4,7 @@ namespace Database\Factories\Location;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class LocationFactory extends Factory
+class LocationCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company(),
-            'status' => rand(0, 1),
+            //
         ];
     }
 }
