@@ -68,7 +68,7 @@
                             <div class="media align-items-center" style="white-space: nowrap">
                                 <div class="avatar avatar-sm mr-8pt">
                                     <span class="avatar-title rounded bg-warning">
-                                        {{ (int) $member->total_earned }}
+                                        {{ (int) $member->member_details->total_earned }}
                                     </span>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                             <div class="media align-items-center" style="white-space: nowrap">
                                 <div class="avatar avatar-sm mr-8pt">
                                     <span class="avatar-title rounded bg-primary text-white">
-                                        {{ (int) $member->total_redeemed }}
+                                        {{ (int) $member->member_details->total_redeemed }}
                                     </span>
                                 </div>
                             </div>

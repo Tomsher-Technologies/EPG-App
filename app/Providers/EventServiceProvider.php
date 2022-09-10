@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Location\Location;
 use App\Models\Member\Member;
 use App\Models\User;
+use App\Observers\LocationObserver;
 use App\Observers\MemberObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -33,5 +35,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Member::observe(MemberObserver::class);
         User::observe(UserObserver::class);
+        Location::observe(LocationObserver::class);
     }
 }

@@ -14,7 +14,6 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            'loc_id' => 'LOC-' . rand(10, 100),
             'name' => $this->faker->company(),
             'status' => rand(0, 1),
         ];

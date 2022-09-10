@@ -25,7 +25,7 @@
                         <label class="col-form-label form-label col-sm-6">nationality</label>
                         <div class="col-sm-6 d-flex align-items-center">
                             <div class="flex pc-text-right">
-                                {{ $member->nationality }}
+                                {{ $member->member_details->nationality }}
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <label class="col-form-label form-label col-sm-6">CONTACT NO.</label>
                         <div class="col-sm-6 d-flex align-items-center">
                             <div class="flex pc-text-right">
-                                {{ $member->phone }}
+                                {{ $member->member_details->phone }}
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="col-sm-6 d-flex align-items-center">
                             <div class="flex pc-text-right">
                                 <button type="button" class="btn btn-dark btn-md">
-                                    {{ $member->total_earned }}
+                                    {{ $member->member_details->total_earned }}
                                 </button>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="col-sm-6 d-flex align-items-center">
                             <div class="flex pc-text-right">
                                 <button type="button" class="btn btn-dark btn-md">
-                                    {{ $member->total_redeemed }}
+                                    {{ $member->member_details->total_redeemed }}
                                 </button>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    @livewire('member.transactions', ['transactions' => $member->transaction])
+    {{-- @livewire('member.transactions', ['transactions' => $member->transaction]) --}}
 </div>
 @endsection
 @push('header')

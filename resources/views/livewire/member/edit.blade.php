@@ -9,7 +9,7 @@
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
-
+ 
             <div class="form-group">
                 <label class="form-label">Email address</label>
                 <input wire:model="member.email" type="email" class="form-control @error('member.email') {{ 'is-invalid' }} @enderror"
@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label class="form-label">Phone no.</label>
-                <input wire:model="member.phone" type="text" class="form-control @error('member.phone') {{ 'is-invalid' }} @enderror" placeholder="Member phone no ...">
+                <input wire:model="member.member_details.phone" type="text" class="form-control @error('member.member_details.phone') {{ 'is-invalid' }} @enderror" placeholder="Member phone no ...">
                 @error('member.phone')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
@@ -29,7 +29,7 @@
 
             <div class="form-group" wire:ignore>
                 <label class="form-label" for="select01">Nationality</label>
-                <select wire:model.lazy="member.nationality" id="select01" data-toggle="select" class="form-control">
+                <select wire:model.lazy="member.member_details.nationality" id="select01" data-toggle="select" class="form-control">
                     @foreach ($countries as $country)
                         <option {{ strtolower($member->nationality) === strtolower($country->name) ? 'selected' : '' }}
                             value="{{ $country->name }}">
@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="select01">Package</label>
-                <select wire:model="member.package_id" wire:ignore id="select02" data-toggle="select"
+                <select wire:model="member.member_details.package_id" wire:ignore id="select02" data-toggle="select"
                     class="form-control">
                     @foreach ($packages as $package)
                         <option {{ $member->package_id == $package->id ? 'selected' : '' }} value="{{ $package->id }}">

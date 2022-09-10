@@ -65,5 +65,7 @@ class UserObserver
     public function flushCache()
     {
         Cache::forget('recptionistCount');
+        Cache::forget('memberCount');
+        Cache::forget('recentMembers');
     }
 }

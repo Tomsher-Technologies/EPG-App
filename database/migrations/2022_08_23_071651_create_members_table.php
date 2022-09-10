@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Location\Package;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,8 +17,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->foreignIdFor(User::class);
             $table->string('phone')->nullable();
             $table->string('nationality')->nullable();
             $table->dateTime('last_used')->nullable();
@@ -25,8 +25,9 @@ class CreateMembersTable extends Migration
             $table->decimal('total_earned', $precision = 8, $scale = 2);
             $table->decimal('total_redeemed', $precision = 8, $scale = 2);
             $table->foreignIdFor(Package::class);
-            $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 
