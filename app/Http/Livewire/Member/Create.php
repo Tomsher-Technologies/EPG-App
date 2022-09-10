@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Bouncer;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Str;
 
 class Create extends Component
 {
@@ -58,26 +60,30 @@ class Create extends Component
     public function save()
     {
         $validatedData = $this->validate();
-        $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'status' => 1,
-            'password' => Hash::make($this->password),
-            'location_id' => 0,
-        ]);
+        // $user = User::create([
+        //     'name' => $this->name,
+        //     'email' => $this->email,
+        //     'status' => 1,
+        //     'password' => Hash::make($this->password),
+        //     'location_id' => 0,
+        // ]);
 
-        Bouncer::assign('member')->to($user);
+        // Bouncer::assign('member')->to($user);
 
-        $user->member_details()->create([
-            'phone' => $this->phone,
-            'nationality' => $this->nationality,
-            'package_id' => $this->package,
-            'total_earned' => 0,
-            'total_redeemed' => 0,
-            'last_used' => NULL,
-            'first_used' => NULL,
-        ]);
+        $slug = (string) Str::uuid();
+        $id = 1;
+        // $user->member_details()->create([
+        //     'phone' => $this->phone,
+        //     'nationality' => $this->nationality,
+        //     'package_id' => $this->package,
+        //     'total_earned' => 0,
+        //     'total_redeemed' => 0,
+        //     'last_used' => NULL,
+        //     'first_used' => NULL,
+        //     'slug' => $slug
+        // ]);
 
+        QrCode::generate(route('qrscan', $slug), storage_path() . "\qr\\" . $id . '.svg');
 
         $this->reset('name');
         $this->reset('email');
