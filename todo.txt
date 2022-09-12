@@ -1,4 +1,7 @@
-Packages
-Benifits
-Membership expiry
+Packages add to sidebar
+Benifits CURD
+// Membership expiry
 Qr scan view
+PDF
+Show price while creating new Member
+Membership renew
