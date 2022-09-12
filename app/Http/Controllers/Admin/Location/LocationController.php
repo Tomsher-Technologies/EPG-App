@@ -6,9 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Location\Location;
 use App\Http\Requests\StoreLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if( Auth::user()->isA('superadmin') ){
+                return $next($request);
+            }
+            abort(403);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

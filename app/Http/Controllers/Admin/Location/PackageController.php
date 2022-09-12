@@ -6,9 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Location\Package;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PackageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if( Auth::user()->isA('superadmin') ){
+                return $next($request);
+            }
+            abort(403);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

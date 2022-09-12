@@ -5,9 +5,19 @@ namespace App\Http\Controllers\Admin\Location;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Receptionist extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if( Auth::user()->isA('superadmin') ){
+                return $next($request);
+            }
+            abort(403);
+        });
+    }
     /**
      * Display a listing of the resource.
      *

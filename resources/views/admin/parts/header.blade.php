@@ -29,7 +29,7 @@
     <div class="flex"></div>
     <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
         <!-- Notifications dropdown -->
-        <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full" data-toggle="tooltip"
+        {{-- <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full" data-toggle="tooltip"
             data-title="Notifications" data-placement="bottom" data-boundary="window">
             <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false">
                 <i class="material-icons">notifications_none</i>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- // END Notifications dropdown -->
 
         <div class="nav-item dropdown">
