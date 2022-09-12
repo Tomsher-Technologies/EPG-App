@@ -24,13 +24,25 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix(env('ADMIN_PREFIX'))->group(function () {
+
+    Route::get('/', function () {
+        return redirect()->route('login');
+    });
+
     Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
 
-        Route::get('/', function () {
-            return redirect()->route('login');
-        });
+        Route::get('/member/{slug}', function ($slug) {
+            $user = User::whereStatus(true)
+                ->whereHas('member_details', function ($q) use ($slug) {
+                    $q->where('slug', $slug);
+                })
+                ->with('member_details')
+                ->firstOrFail();
 
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            return view('welcome')->with('user', $user);
+        })->name('qrscan');
+
+        Route::get('admindashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('members', MemberController::class)->only(['index', 'create', 'show', 'edit']);
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Member\Auth\MemberAuthController;
+use App\Http\Controllers\Member\MemberDashboardController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +20,18 @@ Route::get('/', function () {
     dd("Home");
 })->name('home');
 
-Route::get('/member/{slug}', function ($slug) {
-    $user = User::whereStatus(true)
-        ->whereHas('member_details', function ($q) use ($slug) {
-            $q->where('slug', $slug);
-        })
-        ->with('member_details')
-        ->firstOrFail();
 
-    return view('welcome')->with('user', $user);
-})->name('qrscan');
+Route::name('member.')->group(function () {
+    Route::middleware(['guest'])->group(function () {
+        Route::get('login', [MemberAuthController::class, 'loginView'])->name('login');
+        Route::post('login', [MemberAuthController::class, 'loginAuth']);
+    });
+
+    Route::middleware(['auth', 'auth.session', 'member'])->group(function () {
+        Route::post('logout', [MemberAuthController::class, 'logout'])->name('logout');
+        Route::get('dashboard', [MemberDashboardController::class, 'dashboard'])->name('dashboard');
+    });
+});
+
 
 include('admin.php');

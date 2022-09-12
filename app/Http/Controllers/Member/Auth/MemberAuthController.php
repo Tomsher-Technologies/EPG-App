@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class MemberAuthController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['guest'], ['except' => [
+            'logout',
+        ]]);
+    }
+
     public function loginView()
     {
         return view('members.auth.login');
@@ -25,11 +33,11 @@ class MemberAuthController extends Controller
             Hash::check($request->password, $user->password)
         ) {
             Auth::login($user);
-            return redirect()->intended('dashboard');
+            return redirect()->intended('member.dashboard');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'nouser' => 'The provided credentials do not match our records.',
         ]);
     }
 
