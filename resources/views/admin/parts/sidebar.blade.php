@@ -53,7 +53,7 @@
                             <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
                                 aria-controls="sm_receptionist">
                                 <i
-                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervisor_account</i>
                                 <span class="sidebar-menu-text">Receptionist</span>
                             </a>
                         </li>
@@ -163,6 +163,13 @@
                     <div class="tab-pane" id="sm_location">
                         <div class="sidebar-heading">Locations</div>
                         <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('location.category.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">category</span>
+                                    <span class="sidebar-menu-text">Categories</span>
+                                </a>
+                            </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="{{ route('location.index') }}">
                                     <span

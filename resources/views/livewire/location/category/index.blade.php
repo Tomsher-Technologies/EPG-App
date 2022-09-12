@@ -95,7 +95,7 @@
                             </td>
                             <td>
                                 <a type="button" class="btn btn-secondary"
-                                    href="{{ route('location-category.edit', $category) }}">
+                                    href="{{ route('location.category.edit', $category) }}">
                                     <i class="material-icons">mode_edit</i>
                                 </a>
                                 <button class="btn btn-accent" type="submit"
