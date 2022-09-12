@@ -7,7 +7,8 @@
                 <input wire:model="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
                     id="inlineFormFilterBy" placeholder="Search ..." />
                 <label class="sr-only" for="inlineFormRole">Filter</label>
-                <select wire:model="package" wire:change="changePackage" id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                <select wire:model="package" wire:change="changePackage" id="inlineFormRole"
+                    class="custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option value="0">All Packages</option>
                     @foreach ($packages as $package)
                         <option value="{{ $package->id }}">{{ $package->name }}</option>
@@ -26,12 +27,14 @@
                         <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Name</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-company">EARNED
-                            POINTS</a>
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-company">
+                            Package
+                        </a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">USED
-                            POINTS</a>
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">
+                            Validity
+                        </a>
                     </th>
                     <th>
                         <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">Status</a>
@@ -66,20 +69,16 @@
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                <div class="avatar avatar-sm mr-8pt">
-                                    <span class="avatar-title rounded bg-warning">
-                                        {{ (int) $member->member_details->total_earned }}
-                                    </span>
-                                </div>
+                                {{ $member->member_details->package->name }}
                             </div>
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                <div class="avatar avatar-sm mr-8pt">
-                                    <span class="avatar-title rounded bg-primary text-white">
-                                        {{ (int) $member->member_details->total_redeemed }}
-                                    </span>
-                                </div>
+                                {{ getExpiryDateString($member->member_details->purchase_date, $member->member_details->expiry_date) }} 
+                                <br/>
+                                <small class="js-lists-values-email text-50">
+                                    {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
+                                </small>
                             </div>
                         </td>
                         <td>

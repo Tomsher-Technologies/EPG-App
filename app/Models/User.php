@@ -49,6 +49,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'purchase_date' => 'datetime',
+        'expiry_date' => 'datetime',
     ];
 
     public function location()
@@ -70,4 +72,11 @@ class User extends Authenticatable
     {
         return URL::to('/storage/qr-code/img-' . $this->id . '.svg');
     }
+
+    public function getExpiryDateString()
+    {
+        
+        return $this->created_at->diffInDays( $this->created_at->add('1 Y') );
+    }
+
 }

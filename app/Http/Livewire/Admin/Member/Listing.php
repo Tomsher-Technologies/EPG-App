@@ -63,6 +63,8 @@ class Listing extends Component
 
         $members = $query->paginate(10);
 
+        $members->load('member_details.package');
+
         return view('livewire.admin.member.listing', [
             'members' => $members,
         ]);
