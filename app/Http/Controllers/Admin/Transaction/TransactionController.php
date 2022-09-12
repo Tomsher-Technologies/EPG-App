@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Location;
+namespace App\Http\Controllers\Admin\Transaction;
 
 use App\Http\Controllers\Controller;
-use App\Models\Location\Package;
-use App\Http\Requests\StorePackageRequest;
-use App\Http\Requests\UpdatePackageRequest;
+use App\Models\Member\Transaction;
+use App\Http\Requests\StoreTransactionRequest;
+use App\Http\Requests\UpdateTransactionRequest;
 
-class PackageController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePackageRequest  $request
+     * @param  \App\Http\Requests\StoreTransactionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePackageRequest $request)
+    public function store(StoreTransactionRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Location\Package  $package
+     * @param  \App\Models\Member\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Package $package)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -54,10 +54,10 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Location\Package  $package
+     * @param  \App\Models\Member\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Package $package)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -65,11 +65,11 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePackageRequest  $request
-     * @param  \App\Models\Location\Package  $package
+     * @param  \App\Http\Requests\UpdateTransactionRequest  $request
+     * @param  \App\Models\Member\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePackageRequest $request, Package $package)
+    public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
         //
     }
@@ -77,10 +77,10 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Location\Package  $package
+     * @param  \App\Models\Member\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy(Transaction $transaction)
     {
         //
     }

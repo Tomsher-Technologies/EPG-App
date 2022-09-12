@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Location;
+namespace App\Http\Controllers\Admin\Location;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Location\Package;
+use App\Http\Requests\StorePackageRequest;
+use App\Http\Requests\UpdatePackageRequest;
 
-class Receptionist extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class Receptionist extends Controller
      */
     public function index()
     {
-        return view('admin.location.receptionist.index');
+        //
     }
 
     /**
@@ -25,16 +26,16 @@ class Receptionist extends Controller
      */
     public function create()
     {
-        return view('admin.location.receptionist.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePackageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePackageRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class Receptionist extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Location\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Package $package)
     {
         //
     }
@@ -53,25 +54,22 @@ class Receptionist extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Location\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $receptionist)
+    public function edit(Package $package)
     {
-        return view('admin.location.receptionist.edit')
-            ->with([
-                'receptionist' => $receptionist
-            ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdatePackageRequest  $request
+     * @param  \App\Models\Location\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePackageRequest $request, Package $package)
     {
         //
     }
@@ -79,10 +77,10 @@ class Receptionist extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Location\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Package $package)
     {
         //
     }

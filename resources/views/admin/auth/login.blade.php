@@ -42,10 +42,12 @@
                     <label class="form-label" for="email">Email:</label>
                     <input id="email" type="email" name="email" class="form-control" placeholder="Your email address ..." value="admin@epg.com">
                 </div>
+                <x-form.error name='email'/>
                 <div class="form-group">
                     <label class="form-label" for="password">Password:</label>
                     <input id="password" type="password" name="password" class="form-control" placeholder="Password" value="password">
                 </div>
+                <x-form.error name='password'/>
                 <div class="text-center">
                     <button class="btn btn-primary">Login</button>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Location;
+namespace App\Http\Controllers\Admin\Location;
 
 use App\Http\Controllers\Controller;
 use App\Models\Location\Location;

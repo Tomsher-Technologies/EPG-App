@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Transaction;
+namespace App\Http\Controllers\Admin\Location;
 
 use App\Http\Controllers\Controller;
-use App\Models\Member\Transaction;
-use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Requests\UpdateTransactionRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class Receptionist extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.location.receptionist.index');
     }
 
     /**
@@ -26,16 +25,16 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.location.receptionist.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTransactionRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTransactionRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Member\Transaction  $transaction
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
         //
     }
@@ -54,22 +53,25 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Member\Transaction  $transaction
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(User $receptionist)
     {
-        //
+        return view('admin.location.receptionist.edit')
+            ->with([
+                'receptionist' => $receptionist
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTransactionRequest  $request
-     * @param  \App\Models\Member\Transaction  $transaction
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +79,10 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Member\Transaction  $transaction
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy($id)
     {
         //
     }

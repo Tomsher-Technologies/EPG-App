@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Location\LocationCategoryController;
-use App\Http\Controllers\Location\LocationController;
-use App\Http\Controllers\Location\Receptionist;
-use App\Http\Controllers\Member\MemberController;
-use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Location\LocationCategoryController;
+use App\Http\Controllers\Admin\Location\LocationController;
+use App\Http\Controllers\Admin\Location\Receptionist;
+use App\Http\Controllers\Admin\Member\MemberController;
+use App\Http\Controllers\Admin\User\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
