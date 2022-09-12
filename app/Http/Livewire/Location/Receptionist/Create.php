@@ -6,6 +6,7 @@ use App\Models\Location\Location;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Bouncer;
 
 class Create extends Component
 {
@@ -44,13 +45,16 @@ class Create extends Component
     public function save()
     {
         $validatedData = $this->validate();
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'status' => 1,
             'location_id' => $this->location,
             'password' => Hash::make($this->password)
         ]);
+        
+        Bouncer::assign('receptionist')->to($user);
+
         $this->reset('name');
         $this->reset('email');
         $this->reset('password');
