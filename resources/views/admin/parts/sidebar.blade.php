@@ -57,6 +57,16 @@
                                 <span class="sidebar-menu-text">Receptionist</span>
                             </a>
                         </li>
+                        <li class="sidebar-menu-item {{ request()->routeIs('package*') ? 'active' : '' }}"
+                            data-title="Packages" data-placement="right" data-container="body"
+                            data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_package" data-toggle="tab" role="tab"
+                                aria-controls="sm_package">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervisor_account</i>
+                                <span class="sidebar-menu-text">Packages</span>
+                            </a>
+                        </li>
                         <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}"
                             data-title="Locations" data-placement="right" data-container="body" data-boundary="window">
                             <a class="sidebar-menu-button" href="#sm_location" data-toggle="tab" role="tab"
@@ -160,6 +170,24 @@
                 </div>
 
                 @if (auth()->user()->isA('superadmin'))
+                    <div class="tab-pane" id="sm_package">
+                        <div class="sidebar-heading">Packages</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('package.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
+                                    <span class="sidebar-menu-text">All Packages</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('package.create') }}">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
+                                    <span class="sidebar-menu-text">Add Packages</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="tab-pane" id="sm_location">
                         <div class="sidebar-heading">Locations</div>
                         <ul class="sidebar-menu">

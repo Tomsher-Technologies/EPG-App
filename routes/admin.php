@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Location\LocationCategoryController;
 use App\Http\Controllers\Admin\Location\LocationController;
+use App\Http\Controllers\Admin\Location\PackageController;
 use App\Http\Controllers\Admin\Location\Receptionist;
 use App\Http\Controllers\Admin\Member\MemberController;
 use App\Http\Controllers\Admin\User\ProfileController;
@@ -53,6 +54,9 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
         Route::group(['prefix' => 'location', 'as' => 'location.'], function () {
             Route::resource('category', LocationCategoryController::class)->only(['index', 'edit']);
         });
+
+        Route::resource('package', PackageController::class)->only(['index', 'create', 'edit']);
+
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/profile', function () {

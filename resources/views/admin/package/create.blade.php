@@ -3,11 +3,9 @@
 @section('content')
 <div class="page-section container page__container">
     <div class="page-separator">
-        <div class="page-separator__text">Create new customer</div>
+        <div class="page-separator__text">Create new package</div>
     </div>
-
-    @livewire('admin.member.create')
-
+    @livewire('admin.package.create')
 </div>
 @endsection
 @push('header')

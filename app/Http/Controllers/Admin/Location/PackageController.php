@@ -13,7 +13,7 @@ class PackageController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            if( Auth::user()->isA('superadmin') ){
+            if (Auth::user()->isA('superadmin')) {
                 return $next($request);
             }
             abort(403);
@@ -36,7 +36,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('admin.package.index');
+        return view('admin.package.create');
     }
 
     /**
@@ -58,7 +58,6 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        return view('admin.package.show');
     }
 
     /**
@@ -69,7 +68,8 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        return view('admin.package.edit');
+        return view('admin.package.edit')
+            ->with(['package' => $package]);
     }
 
     /**
