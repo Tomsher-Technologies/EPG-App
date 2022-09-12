@@ -164,13 +164,6 @@
                         <div class="sidebar-heading">Locations</div>
                         <ul class="sidebar-menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{{ route('location.category.index') }}">
-                                    <span
-                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">category</span>
-                                    <span class="sidebar-menu-text">Categories</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="{{ route('location.index') }}">
                                     <span
                                         class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
