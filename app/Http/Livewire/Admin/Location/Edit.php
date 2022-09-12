@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Location;
+namespace App\Http\Livewire\Admin\Location;
 
 use App\Models\Location\Location;
 use Livewire\Component;
@@ -41,6 +41,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.location.edit');
+        return view('livewire.admin.location.edit');
     }
 }

@@ -6,7 +6,7 @@
             <div class="page-separator__text">Edit location</div>
 
         </div>
-        @livewire('location.edit', ['location' => $location])
+        @livewire('admin.location.edit', ['location' => $location])
     </div>
 @endsection
 @push('header')

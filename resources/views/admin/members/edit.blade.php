@@ -7,7 +7,7 @@
 
         </div>
 
-        @livewire('member.edit', ['member' => $member])
+        @livewire('admin.member.edit', ['member' => $member])
 
     </div>
 @endsection

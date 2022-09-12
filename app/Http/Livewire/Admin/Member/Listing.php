@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Member;
+namespace App\Http\Livewire\Admin\Member;
 
 use App\Models\Location\Package;
 use App\Models\User;
@@ -49,7 +49,10 @@ class Listing extends Component
         $query = User::whereIs('member')->with('member_details')->latest();
 
         if ((int)$this->package !== 0) {
-            $query->where('member_details.package_id', (int)$this->package);
+            $pid = $this->package;
+            $query->whereHas('member_details', function ($q) use ($pid) {
+                return $q->where('package_id', $pid);
+            });
         }
 
         if ($this->search !== '') {
@@ -60,7 +63,7 @@ class Listing extends Component
 
         $members = $query->paginate(10);
 
-        return view('livewire.member.listing', [
+        return view('livewire.admin.member.listing', [
             'members' => $members,
         ]);
     }

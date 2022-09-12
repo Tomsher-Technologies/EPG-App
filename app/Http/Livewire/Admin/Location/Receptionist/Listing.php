@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Location\Receptionist;
+namespace App\Http\Livewire\Admin\Location\Receptionist;
 
 use App\Models\Location\Location;
 use App\Models\User;
@@ -50,7 +50,7 @@ class Listing extends Component
 
         $receptionist = $query->paginate(10);
 
-        return view('livewire.location.receptionist.listing', [
+        return view('livewire.admin.location.receptionist.listing', [
             'receptionists' => $receptionist,
         ]);
     }

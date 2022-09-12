@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Location\Receptionist;
+namespace App\Http\Livewire\Admin\Location\Receptionist;
 
 use App\Models\Location\Location;
 use App\Models\User;
@@ -71,6 +71,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.location.receptionist.create');
+        return view('livewire.admin.location.receptionist.create');
     }
 }

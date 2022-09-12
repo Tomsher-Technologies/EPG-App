@@ -26,7 +26,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.package.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.package.index');
     }
 
     /**
@@ -58,7 +58,7 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        //
+        return view('admin.package.show');
     }
 
     /**
@@ -69,7 +69,7 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        //
+        return view('admin.package.edit');
     }
 
     /**

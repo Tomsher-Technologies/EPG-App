@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Member;
+namespace App\Http\Livewire\Admin\Member;
 
 use App\Models\Location\Location;
 use Livewire\Component;
@@ -32,6 +32,6 @@ class Transactions extends Component
         } else {
             $this->transactions = $this->allTransactions;
         }
-        return view('livewire.member.transactions');
+        return view('livewire.admin.member.transactions');
     }
 }

@@ -6,7 +6,7 @@
         <div class="page-separator__text">Create new customer</div>
     </div>
 
-    @livewire('member.create')
+    @livewire('admin.member.create')
 
 </div>
 @endsection

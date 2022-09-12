@@ -5,7 +5,7 @@
         <div class="page-separator">
             <div class="page-separator__text">Create new location</div>
         </div>
-        @livewire('location.create')
+        @livewire('admin.location.create')
     </div>
 @endsection
 @push('header')

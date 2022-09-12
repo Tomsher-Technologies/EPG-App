@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Member;
+namespace App\Http\Livewire\Admin\Member;
 
 use App\Models\Common\Country;
 use App\Models\Location\Package;
@@ -105,6 +105,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.member.create');
+        return view('livewire.admin.member.create');
     }
 }

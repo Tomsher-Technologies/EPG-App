@@ -6,7 +6,7 @@
             <div class="page-separator__text">All customers</div>
         </div>
 
-        @livewire('member.listing')
+        @livewire('admin.member.listing')
 
     </div>
 @endsection

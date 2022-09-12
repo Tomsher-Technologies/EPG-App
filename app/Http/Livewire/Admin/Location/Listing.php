@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Location;
+namespace App\Http\Livewire\Admin\Location;
 
 use App\Models\Location\Location;
 use Livewire\Component;
@@ -52,7 +52,7 @@ class Listing extends Component
 
         $locations = $query->paginate(10);
 
-        return view('livewire.location.listing', [
+        return view('livewire.admin.location.listing', [
             'locations' => $locations,
         ]);
     }
