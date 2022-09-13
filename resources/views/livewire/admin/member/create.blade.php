@@ -52,7 +52,26 @@
                 @error('package')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
-                {{ $packages->find($package)->price }}
+                @if ($package > 0)
+                    <div class="list-group list-group-form mt-3">
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0 justify-content-between">
+                                <label class="col-form-label form-label ">Validity</label>
+                                <div class=" d-flex align-items-center">
+                                    <div class="flex">{{ $packages->find($package)->validity }} {{ Str::plural('year', $packages->find($package)->validity) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0 justify-content-between">
+                                <label class="col-form-label form-label ">Price</label>
+                                <div class=" d-flex align-items-center">
+                                    <div class="flex">AED {{ $packages->find($package)->getPrice() }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
             <button class="btn btn-primary" type="submit">Save</button>
         </form>
