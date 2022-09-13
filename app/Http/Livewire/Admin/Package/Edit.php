@@ -16,11 +16,13 @@ class Edit extends Component
             'package.name' => ['required', 'unique:packages,name,' . $this->package->id],
             'package.price' => ['required', 'integer'],
             'package.status' => ['required'],
+            'package.validity' => ['required'],
         ];
     }
 
     protected $messages = [
         'package.price.required' => 'Please enter a price.',
+        'package.validity.required' => 'Please enter a validity period.',
         'package.price.integer' => 'Please enter a valid price.',
         'package.name.required' => 'Please enter a name.',
         'package.name.unique' => 'This name already exist.',

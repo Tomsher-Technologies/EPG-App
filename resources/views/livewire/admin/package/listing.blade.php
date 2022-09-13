@@ -22,6 +22,9 @@
                         <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Price</a>
                     </th>
                     <th>
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Validity</a>
+                    </th>
+                    <th>
                         <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">Status</a>
                     </th>
                     <th>
@@ -50,6 +53,11 @@
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
                                 {{ $package->getPrice() }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media align-items-center" style="white-space: nowrap">
+                                {{ $package->validity }} {{ Str::plural('year', $package->validity) }}
                             </div>
                         </td>
                         <td>

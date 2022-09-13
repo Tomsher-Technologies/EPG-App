@@ -45,13 +45,14 @@
                 <label class="form-label" for="select01">Package</label>
                 <select wire:model="package" id="select01" data-toggle="select" class="form-control">
                     <option value="">Select a package</option>
-                    @foreach ($packages as $package)
-                        <option value="{{ $package->id }}">{{ $package->name }}</option>
+                    @foreach ($packages as $pac)
+                        <option value="{{ $pac->id }}">{{ $pac->name }}</option>
                     @endforeach
                 </select>
                 @error('package')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
+                {{ $packages->find($package)->price }}
             </div>
             <button class="btn btn-primary" type="submit">Save</button>
         </form>

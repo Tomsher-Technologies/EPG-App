@@ -1,4 +1,3 @@
-Packages add to sidebar
 Benifits CURD
 // Membership expiry
 Qr scan view

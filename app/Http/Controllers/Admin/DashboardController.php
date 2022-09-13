@@ -26,7 +26,7 @@ class DashboardController extends Controller
         });
 
         $recentMembers = Cache::rememberForever('recentMembers', function () {
-            return User::whereIs('member')->latest()->with('member_details')->limit(10)->get();
+            return User::whereIs('member')->latest()->with(['member_details','member_details.package'])->limit(10)->get();
         });
 
         return view('admin.dashboard')

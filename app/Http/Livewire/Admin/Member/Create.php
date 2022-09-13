@@ -18,7 +18,7 @@ class Create extends Component
 
     public $countries;
     public $packages;
-
+ 
     // Models
     public $name;
     public $email;

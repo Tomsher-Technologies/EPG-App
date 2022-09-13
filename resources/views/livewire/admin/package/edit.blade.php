@@ -15,6 +15,13 @@
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
+            <div class="form-group">
+                <label class="form-label">Validity period(in years)</label>
+                <input wire:model="package.validity" type="number" class="form-control">
+                @error('package.validity')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
+            </div>
             <div class="form-group" wire:ignore>
                 <label class="form-label" for="select01">Status</label>
                 <select wire:model="package.status" id="select02" data-toggle="select" class="form-control">

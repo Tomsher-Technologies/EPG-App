@@ -15,6 +15,13 @@
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
+            <div class="form-group">
+                <label class="form-label">Validity period(in years)</label>
+                <input wire:model="validity" type="number" class="form-control">
+                @error('validity')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
+            </div>
             <button class="btn btn-primary" type="submit">Save</button>
         </form>
     </div>

@@ -10,17 +10,20 @@ class Create extends Component
 
     public $name;
     public $price;
+    public $validity;
 
     protected function rules()
     {
         return [
             'name' => ['required', 'unique:packages,name'],
             'price' => ['required', 'integer'],
+            'validity' => ['required', 'integer'],
         ];
     }
 
     protected $messages = [
         'price.required' => 'Please enter a price.',
+        'validity.required' => 'Please enter a validity.',
         'price.integer' => 'Please enter a valid price.',
         'name.required' => 'Please enter a name.',
         'name.unique' => 'This name already exist.',
@@ -37,10 +40,12 @@ class Create extends Component
         Package::create([
             'name' => $this->name,
             'price' => $this->price,
+            'validity' => $this->validity,
             'status' => 1
         ]);
         $this->reset('name');
         $this->reset('price');
+        $this->reset('validity');
         $this->dispatchBrowserEvent('memberUpdated');
     }
 
