@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\URL;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Wildside\Userstamps\Userstamps;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, SoftDeletes, Userstamps;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, SoftDeletes, Userstamps, AuthenticationLoggable;
  
     /**
      * The attributes that are mass assignable.

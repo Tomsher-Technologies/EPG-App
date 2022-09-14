@@ -40,7 +40,7 @@
                 @csrf
                 <div class="form-group">
                     <label class="form-label" for="email">Email:</label>
-                    <input id="email" type="email" name="email" class="form-control" placeholder="Your email address ..." value="admin@epg.com">
+                    <input id="email" type="email" name="email" class="form-control" placeholder="Your email address ..." value="admin@raffles.com">
                 </div>
                 <x-form.error name='email'/>
                 <div class="form-group">

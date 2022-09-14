@@ -158,9 +158,10 @@
 
         <div class="page-separator">
             <div class="page-separator__text">
-                transactions History
+                Login History
             </div>
         </div>
+        @livewire('admin.users.authentication-log', ['user' => $member])
 
         {{-- @livewire('member.transactions', ['transactions' => $member->transaction]) --}}
     </div>
