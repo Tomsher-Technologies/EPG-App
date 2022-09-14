@@ -3,10 +3,10 @@
 @section('content')
     <div class="page-section container page__container">
         <div class="page-separator">
-            <div class="page-separator__text">Edit location</div>
+            <div class="page-separator__text">Edit Category</div>
 
         </div>
-        @livewire('admin.location.edit', ['location' => $location])
+        @livewire('admin.benifit.category.edit', ['category' => $benefitCategory])
     </div>
 @endsection
 @push('header')

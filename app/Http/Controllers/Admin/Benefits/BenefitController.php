@@ -16,7 +16,7 @@ class BenefitController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.benifits.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class BenefitController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.benifits.create');
     }
 
     /**
@@ -59,7 +59,10 @@ class BenefitController extends Controller
      */
     public function edit(Benefit $benefit)
     {
-        //
+        return view('admin.benifits.edit')
+            ->with([
+                'benefit' => $benefit
+            ]);
     }
 
     /**
