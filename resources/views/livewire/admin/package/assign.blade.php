@@ -15,8 +15,7 @@
                     <th style="width: 18px;" class="pr-0">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input js-toggle-check-all"
-                                data-target="#toggle" id="customCheckAlltoggle" wire:model="globalStatus"
-                                wire:click="toggleAll()">
+                                data-target="#toggle" id="customCheckAlltoggle">
                             <label class="custom-control-label" for="customCheckAlltoggle"><span
                                     class="text-hide">Toggle all</span></label>
                         </div>
@@ -36,8 +35,7 @@
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input js-check-selected-row"
                                     id="customCheck1_toggle{{ $loop->iteration }}"
-                                    {{ $selectedItems[$benefit->id] ? 'checked' : '' }}
-                                    wire:click="toggle({{ $benefit->id }})">
+                                    wire:model="selectedItems.{{ $benefit->id }}">
                                 <label class="custom-control-label"
                                     for="customCheck1_toggle{{ $loop->iteration }}"><span
                                         class="text-hide">Check</span></label>
@@ -66,4 +64,14 @@
         <button class="btn btn-primary m-2" wire:click="save()">Assign benefits</button>
 
     </div>
+
+    <script>
+        window.addEventListener('memberUpdated', event => {
+            Swal.fire({
+                title: 'Benefits assigned successfully!',
+                icon: 'success'
+            });
+        })
+    </script>
+
 </div>

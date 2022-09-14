@@ -1,6 +1,6 @@
 // Packages add to sidebar
 // Benifits CURD
-Benifits to packages
+// Benifits to packages
 // Add expiry date to member when creating new member
 // Membership expiry
 Qr scan view

@@ -18,8 +18,6 @@ class Assign extends Component
 
     public $selectedItems = [];
 
-    public $globalStatus = false;
-
     public function mount($package)
     {
         $this->package = $package;
@@ -36,22 +34,11 @@ class Assign extends Component
         }
     }
 
-    function toggle($id)
-    {
-        $this->selectedItems[$id] = !$this->selectedItems[$id];
-    }
-
-    function toggleAll()
-    {
-        foreach ($this->selectedItems as $key => $item) {
-            $this->selectedItems[$key] = $this->globalStatus;
-        }
-    }
-
-
     function save()
     {
-        dd($this->selectedItems);
+        $this->package->benefits()->detach();
+        $this->package->benefits()->attach(array_keys($this->selectedItems, true));
+        $this->dispatchBrowserEvent('memberUpdated');
     }
 
     public function render()

@@ -75,6 +75,9 @@
                             </div>
                         </td>
                         <td>
+                            <a type="button" class="btn btn-primary" href="{{ route('package.assign', $package) }}">
+                                <i class="material-icons">playlist_add_check</i>
+                            </a>
                             <a type="button" class="btn btn-secondary" href="{{ route('package.edit', $package) }}">
                                 <i class="material-icons">mode_edit</i>
                             </a>
