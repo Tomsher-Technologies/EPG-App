@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Benefits\BenefitCategoryController;
+use App\Http\Controllers\Admin\Benefits\BenefitController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Location\LocationCategoryController;
 use App\Http\Controllers\Admin\Location\LocationController;
@@ -51,12 +53,13 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
 
         Route::resource('location', LocationController::class)->only(['index', 'create', 'edit']);
 
-        Route::group(['prefix' => 'location', 'as' => 'location.'], function () {
-            Route::resource('category', LocationCategoryController::class)->only(['index', 'edit']);
-        });
-
         Route::resource('package', PackageController::class)->only(['index', 'create', 'edit']);
 
+        Route::resource('benefit', BenefitController::class)->only(['index', 'create', 'edit']);
+
+        Route::group(['prefix' => 'benefit', 'as' => 'benefit.'], function () {
+            Route::resource('category', BenefitCategoryController::class)->only(['index', 'create', 'edit']);
+        });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/profile', function () {
