@@ -30,11 +30,17 @@ function getExpiryDateString($start_date, $end_date)
 
     $diff = $end_date->diffInDays($start_date);
 
-    if ($diff == 0 ) {
+    if ($diff == 0) {
         return "Expired";
     } else if ($diff > 30) {
         return $end_date->diffInMonths($start_date)  . "  " .  Str::plural('month', $diff) . "  " . 'remaining';
     } else {
         return $diff . "  " . Str::plural('day', $diff) . "  " . 'remaining';
     }
+}
+
+
+function isSelected($check, $condition)
+{
+    return $check == $condition ? 'selected' : '';
 }
