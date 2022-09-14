@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Bouncer;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class Create extends Component
 
     public $countries;
     public $packages;
- 
+
     // Models
     public $name;
     public $email;
@@ -74,6 +75,9 @@ class Create extends Component
 
         $slug = (string) Str::uuid();
 
+        $selectedPackage = $this->packages->find($this->package);
+        $expiry_date = Carbon::now()->addYears($selectedPackage->validity)->startOfDay();
+
         $user->member_details()->create([
             'phone' => $this->phone,
             'nationality' => $this->nationality,
@@ -82,7 +86,9 @@ class Create extends Component
             'total_redeemed' => 0,
             'last_used' => NULL,
             'first_used' => NULL,
-            'slug' => $slug
+            'slug' => $slug,
+            'expiry_date' => $expiry_date,
+            'purchase_date' => Carbon::now(),
         ]);
 
         $output_file = 'qr-code/img-' . $user->id . '.svg';

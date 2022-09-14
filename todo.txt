@@ -1,6 +1,6 @@
 //Packages add to sidebar
 Benifits CURD
-Add expiry date to member when creating new member
+//Add expiry date to member when creating new member
 // Membership expiry
 Qr scan view
 PDF
