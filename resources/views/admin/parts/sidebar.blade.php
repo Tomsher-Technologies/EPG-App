@@ -243,6 +243,20 @@
                                     <span class="sidebar-menu-text">Categories</span>
                                 </a>
                             </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('benefit.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Bebefits</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('benefit.create') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Add Bebefit</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 @endif
