@@ -55,6 +55,8 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
 
         Route::resource('package', PackageController::class)->only(['index', 'create', 'edit']);
 
+        Route::get('package/{package}/assign/', [PackageController::class, 'assingToPackage'])->name('package.assign');
+
         Route::resource('benefit', BenefitController::class)->only(['index', 'create', 'edit']);
 
         Route::group(['prefix' => 'benefit', 'as' => 'benefit.'], function () {

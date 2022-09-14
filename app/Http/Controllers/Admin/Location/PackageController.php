@@ -94,4 +94,11 @@ class PackageController extends Controller
     {
         //
     }
+
+
+    public function assingToPackage(Package $package)
+    {
+        return view('admin.package.assign')
+            ->with(['package' => $package]);
+    }
 }

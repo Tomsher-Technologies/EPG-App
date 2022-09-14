@@ -2,6 +2,7 @@
 
 namespace App\Models\Location;
 
+use App\Models\Benefits\Benefit;
 use App\Models\Member\Member;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,11 @@ class Package extends Model
     function location()
     {
         return $this->belongsToMany(Location::class, 'location_to_package', 'package_id', 'location_id');
+    }
+
+    public function benefits()
+    {
+        return $this->belongsToMany(Benefit::class,'benefits_packages');
     }
 
     function members()

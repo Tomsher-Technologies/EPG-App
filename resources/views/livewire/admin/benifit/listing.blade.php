@@ -73,7 +73,7 @@
                                     {{-- <form action="" class="s-inline"> --}}
                                     <input wire:click="toggleStatus({{ $benefit->id }})"
                                         {{ $benefit->status == 1 ? 'checked' : '' }} value="{{ $benefit->id }}"
-                                        type="checkbox" id="active{{ $loop->iteration }}"
+                                        type="radio" id="active{{ $loop->iteration }}"
                                         class="custom-control-input" />
                                     <label class="custom-control-label"
                                         for="active{{ $loop->iteration }}">Active</label>
