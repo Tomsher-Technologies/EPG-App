@@ -16,6 +16,15 @@ class Benefit extends Model
 
     public function package()
     {
-        return $this->belongsToMany(Package::class,'benefits_packages');
+        return $this->belongsToMany(Package::class, 'benefits_packages');
+    }
+
+    public function isLimited()
+    {
+        return $this->validity_type == 'limited';
+    }
+    public function isUnlimited()
+    {
+        return $this->validity_type == 'unlimited';
     }
 }

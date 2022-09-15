@@ -50,7 +50,7 @@ class MemberController extends Controller
      */
     public function show(User $member)
     {
-        $member->load(['transaction', 'transaction.location', 'member_details']);
+        $member->load(['member_details', 'member_details.package', 'member_details.package']);
         return view('admin.members.show')->with([
             'member' => $member
         ]);
@@ -91,5 +91,16 @@ class MemberController extends Controller
     public function destroy(User $member)
     {
         //
+    }
+
+    public function qrscan($slug)
+    {
+        $user = User::whereStatus(true)
+            ->whereHas('member_details', function ($q) use ($slug) {
+                $q->where('slug', $slug);
+            })
+            ->with('member_details')
+            ->firstOrFail();
+        return redirect()->route('members.show', $user);
     }
 }

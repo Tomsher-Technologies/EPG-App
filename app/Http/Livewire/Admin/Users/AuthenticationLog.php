@@ -16,25 +16,25 @@ class AuthenticationLog extends Component
     use WithPagination;
 
     public User $user;
-    public $logs;
+    // public $logs;
     public $search = '';
 
     public function mount(User $user)
     {
         $this->user = $user;
-        $this->logs = $user->authentications->sortBy('login_at');
-        foreach ($this->logs as $log) {
-            $agent = new Agent();
-            $agent->setUserAgent($log->user_agent);
-            $log->user_agent = $agent->platform() . ' - ' . $agent->browser();
-        }
     }
 
     public function render()
     {
+        $logs = $this->user->authentications()->paginate(15);
+        foreach ($logs as $log) {
+            $agent = new Agent();
+            $agent->setUserAgent($log->user_agent);
+            $log->user_agent = $agent->platform() . ' - ' . $agent->browser();
+        }
         return view('livewire.admin.users.authentication-log')
             ->with([
-                'logs' => $this->logs
+                'logs' => $logs
             ]);
     }
 

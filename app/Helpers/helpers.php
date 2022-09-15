@@ -44,3 +44,12 @@ function isSelected($check, $condition)
 {
     return $check == $condition ? 'selected' : '';
 }
+
+
+function isExpired($expiry_date)
+{
+    if (Carbon::now()->lt(Carbon::parse($expiry_date))) {
+        return true;
+    }
+    return false;
+}

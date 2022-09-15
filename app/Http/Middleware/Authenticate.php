@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            if (trim(Route::current()->getPrefix(), '/') !== env('ADMIN_PREFIX')) {
+            if (Route::current()->getName() !== 'qrscan') {
                 return route('member.login');
             }
         }

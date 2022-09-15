@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
+    Route::get('/member/{slug}', [MemberController::class, 'qrscan'])->name('qrscan');
+});
 
 
 Route::prefix(env('ADMIN_PREFIX'))->group(function () {
@@ -33,17 +35,6 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
     });
 
     Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
-
-        Route::get('/member/{slug}', function ($slug) {
-            $user = User::whereStatus(true)
-                ->whereHas('member_details', function ($q) use ($slug) {
-                    $q->where('slug', $slug);
-                })
-                ->with('member_details')
-                ->firstOrFail();
-
-            return view('welcome')->with('user', $user);
-        })->name('qrscan');
 
         Route::get('admindashboard', [DashboardController::class, 'index'])->name('dashboard');
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\Member;
 
+use App\Models\Benefits\Benefit;
 use App\Models\Location\Location;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,9 +19,13 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function location()
+    public function receptionist()
     {
-        return $this->belongsTo(Location::class,'location_id');
+        return $this->belongsTo(User::class, 'id', 'receptionist_id');
     }
 
+    public function benefit()
+    {
+        return $this->hasOne(Benefit::class);
+    }
 }

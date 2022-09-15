@@ -9,6 +9,18 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="list-group list-group-form">
+
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ $member->id }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-form-label form-label col-sm-6">NAME</label>
@@ -53,58 +65,14 @@
                         </div>
                     </div>
 
-                    <div class="list-group-item">
-                        <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
-                            <div class="col-sm-6 d-flex align-items-center">
-                                <div class="flex pc-text-right">
-                                    {{ $member->id }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="list-group-item">
-                        <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">Last used</label>
-                            <div class="col-sm-6 d-flex align-items-center">
-                                <div class="flex pc-text-right">
-                                    26 Sep 2022
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
 
             <div class="col-lg-6">
-                <div class="list-group list-group-form">
-
-                    <div class="list-group-item">
-                        <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">EARNED reward POINT</label>
-                            <div class="col-sm-6 d-flex align-items-center">
-                                <div class="flex pc-text-right">
-                                    <button type="button" class="btn btn-dark btn-md">
-                                        {{ $member->member_details->total_earned }}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">SPENTED reward POINTS</label>
-                            <div class="col-sm-6 d-flex align-items-center">
-                                <div class="flex pc-text-right">
-                                    <button type="button" class="btn btn-dark btn-md">
-                                        {{ $member->member_details->total_redeemed }}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {{-- <div class="list-group list-group-form">
 
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
@@ -117,58 +85,111 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
 
-                {{-- <div class="list-group list-group-form">
-                <div class="list-group-item">
-                    <div class="form-group row align-items-center mb-0">
-                        <label class="col-form-label form-label col-sm-6">CARD NO</label>
-                        <div class="col-sm-6 d-flex align-items-center">
-                            <div class="flex pc-text-right">
-                                984 545 221
+                <div class="list-group list-group-form">
+
+
+
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">Membership Status</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    <div class="status avatar avatar-sm mr-8pt">
+                                        <span
+                                            class="px-2 avatar-title rounded bg-{{ isExpired($member->member_details->expiry_date) ? 'success' : 'danger' }} text-white">
+                                            {{ isExpired($member->member_details->expiry_date) ? 'ACTIVE' : 'EXPIRED' }}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="list-group-item">
-                    <div class="form-group row align-items-center mb-0">
-                        <label class="col-form-label form-label col-sm-6">CARD ACTIVATED</label>
-                        <div class="col-sm-6 d-flex align-items-center">
-                            <div class="flex pc-text-right">
-                                10/5/2020
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">Package</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ $member->member_details->package->name }}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="list-group-item">
-                    <div class="form-group row align-items-center mb-0">
-                        <label class="col-form-label form-label col-sm-6">CARD VALIDITY</label>
-                        <div class="col-sm-6 d-flex align-items-center">
-                            <div class="flex pc-text-right">
-                                10/5/2025
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">Purchase Date</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ Carbon\Carbon::parse($member->member_details->purchase_date)->format('d/m/Y') }}
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">Expiry Date</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">Last used</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ Carbon\Carbon::parse($member->member_details->last_used)->format('d/m/Y') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div> --}}
             </div>
         </div>
+    </div>
 
+    <div class="page-section container page__container pt-0" id="container-wide">
         <div class="page-separator">
+            <div class="page-separator__text">
+                Benefits
+            </div>
+        </div>
+        @livewire('admin.member.benefit-list', [
+            'package' => $member->member_details->package,
+            'user' => $member
+        ])
+
+        {{-- <div class="page-separator mt-3">
             <div class="page-separator__text">
                 Login History
             </div>
         </div>
-        @livewire('admin.users.authentication-log', ['user' => $member])
-
+        @livewire('admin.users.authentication-log', ['user' => $member]) --}}
         {{-- @livewire('member.transactions', ['transactions' => $member->transaction]) --}}
+
     </div>
 @endsection
 @push('header')
     @livewireStyles
     @livewireScripts
+
+    <style>
+        .status.avatar {
+            width: auto;
+        }
+
+        #container-wide {
+            max-width: 1200px;
+        }
+    </style>
 @endpush
 @push('footer')
 @endpush

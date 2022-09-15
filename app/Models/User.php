@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Location\Location;
+use App\Models\Location\Package;
 use App\Models\Member\Member;
 use App\Models\Member\Transaction;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,7 +21,7 @@ use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, SoftDeletes, Userstamps, AuthenticationLoggable;
- 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -76,8 +78,7 @@ class User extends Authenticatable
 
     public function getExpiryDateString()
     {
-        
-        return $this->created_at->diffInDays( $this->created_at->add('1 Y') );
+        return $this->created_at->diffInDays($this->created_at->add('1 Y'));
     }
 
 }

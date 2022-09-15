@@ -1,23 +1,22 @@
 <div class="card mb-0">
-    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
-        data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+    <div class="table-responsive" data-toggle="lists">
         <table class="table mb-0 thead-border-top-0 table-nowrap">
             <thead>
                 <tr>
                     <th class="pr-0">
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">No:</a>
+                        <a href="javascript:void(0)">No:</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">Login At</a>
+                        <a href="javascript:void(0)">Login At</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Logout At</a>
+                        <a href="javascript:void(0)">Logout At</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">IP Address</a>
+                        <a href="javascript:void(0)">IP Address</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Browser</a>
+                        <a href="javascript:void(0)">Browser</a>
                     </th>
                 </tr>
             </thead>
@@ -51,5 +50,6 @@
         </table>
     </div>
     <div class="card-footer p-8pt">
+        {{ $logs->links() }}
     </div>
 </div>
