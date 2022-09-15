@@ -29,7 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
         {
             public function toResponse($request)
             {
-                return redirect(env('ADMIN_PREFIX') . RouteServiceProvider::HOME);
+                return redirect()->intended(env('ADMIN_PREFIX') . RouteServiceProvider::HOME);
             }
         });
 
