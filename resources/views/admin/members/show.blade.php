@@ -196,7 +196,8 @@
             max-width: 1200px;
         }
 
-        .table-nowrap th {
+        .table-nowrap th,
+        .table-nowrap td {
             white-space: unset;
         }
     </style>
