@@ -26,6 +26,11 @@ class Transaction extends Model
 
     public function benefit()
     {
-        return $this->hasOne(Benefit::class);
+        return $this->belongsTo(Benefit::class);
+    }
+    
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }

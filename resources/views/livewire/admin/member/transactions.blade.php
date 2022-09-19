@@ -5,66 +5,67 @@
             <form class="form-inline">
                 <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
                 <label class="sr-only" for="inlineFormRole">Filter</label>
-                <select wire:model="location" wire:change="changeLocation" id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                <select wire:model="location" wire:change="changeLocation" id="inlineFormRole"
+                    class="custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option value="0">All Locations</option>
                     @foreach ($locations as $location)
-                    <option value="{{ $location->id }}">{{ $location->name }}</option>
+                        <option value="{{ $location->id }}">{{ $location->name }}</option>
                     @endforeach
                 </select>
             </form>
         </div>
 
         @if ($transactions->count())
-        <table class="table mb-0 thead-border-top-0 table-nowrap">
-            <thead>
-                <tr>
-                    <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">TRAN. NO.
-                        </a>
-                    </th>
+            <table class="table mb-0 thead-border-top-0 table-nowrap">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">TRAN. NO.
+                            </a>
+                        </th>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">
+                                Benefit name
+                            </a>
+                        </th>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">DATE</a>
+                        </th>
 
-                    <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">DATE</a>
-                    </th>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">LOCATION</a>
+                        </th>
 
-                    <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">LOCATION</a>
-                    </th>
-                    <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">redeem
-                            point</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="list" id="contacts">
-                @foreach ($transactions as $transaction)
-                <tr>
-                    <td>
-                        {{ $transaction->id }}
-                    </td>
-                    <td>
-                        {{ $transaction->created_at->format('d/m/Y') }}
-                    </td>
+                    </tr>
+                </thead>
+                <tbody class="list" id="contacts">
+                    @foreach ($transactions as $transaction)
+                        <tr>
+                            <td>
+                                {{ $transaction->id }}
+                            </td>
+                            <td>
+                                {{ $transaction->benefit->name }}
+                            </td>
+                            <td>
+                                {{ $transaction->created_at->format('d/m/Y') }}
+                            </td>
 
-                    <td class="">
-                        {{ $transaction->location->name }}
-                    </td>
-                    <td class="">
-                        {{ (int)$transaction->points }}
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            <td class="">
+                                {{ $transaction->location->name }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @else
-        <p class="p-4 m-0">
-            No transactions yet
-        </p>
+            <p class="p-4 m-0">
+                No transactions yet
+            </p>
         @endif
 
     </div>
-{{-- 
-    <div class="card-footer p-8pt">
+    {{-- <div class="card-footer p-8pt">
         <ul class="pagination justify-content-start pagination-xsm m-0">
             <li class="page-item disabled">
                 <a class="page-link" href="#" aria-label="Previous">

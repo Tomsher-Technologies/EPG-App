@@ -23,6 +23,7 @@ class Benefit extends Model
     {
         return $this->validity_type == 'limited';
     }
+    
     public function isUnlimited()
     {
         return $this->validity_type == 'unlimited';

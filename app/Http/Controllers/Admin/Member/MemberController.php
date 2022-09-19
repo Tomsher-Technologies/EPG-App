@@ -93,6 +93,20 @@ class MemberController extends Controller
         //
     }
 
+    public function transactions(User $member)
+    {
+        return view('admin.members.transactions')->with([
+            'member' => $member
+        ]);
+    }
+
+    public function logins(User $member)
+    {
+        return view('admin.members.logins')->with([
+            'member' => $member
+        ]);
+    }
+
     public function qrscan($slug)
     {
         $user = User::whereStatus(true)

@@ -78,7 +78,6 @@
     </div>
     <script>
         window.addEventListener('memberUpdated', event => {
-            console.log("asd");
             Swal.fire({
                 title: 'Member create successfully!',
                 icon: 'success'

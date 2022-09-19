@@ -28,14 +28,23 @@ function getExpiryDateString($start_date, $end_date)
     $start_date = Carbon::parse($start_date);
     $end_date = Carbon::parse($end_date);
 
-    $diff = $end_date->diffInDays($start_date);
+    $diff = $start_date->diffInDays($end_date, false);
 
-    if ($diff == 0) {
-        return "Expired";
+    if ($diff <= 0) {
+        return array(
+            'msg' => "Expired",
+            'status' => 0
+        );
     } else if ($diff > 30) {
-        return $end_date->diffInMonths($start_date)  . "  " .  Str::plural('month', $diff) . "  " . 'remaining';
+        return array(
+            'msg' => $end_date->diffInMonths($start_date)  . "  " .  Str::plural('month', $diff) . "  " . 'remaining',
+            'status' => 1
+        );
     } else {
-        return $diff . "  " . Str::plural('day', $diff) . "  " . 'remaining';
+        return array(
+            'msg' => $diff . "  " . Str::plural('day', $diff) . "  " . 'remaining',
+            'status' => 1
+        );
     }
 }
 

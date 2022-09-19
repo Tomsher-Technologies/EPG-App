@@ -102,7 +102,7 @@
                         </div>
                     </div>
 
-                    <div class="row card-group-row">
+                    {{-- <div class="row card-group-row">
                         <div class="col-md-6 card-group-row__col">
                             <div class="card card-group-row__card">
                                 <div class="card-header d-flex">
@@ -119,7 +119,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                    {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                 </div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <div class="mb-4pt">
@@ -178,7 +177,6 @@
                                         </div>
                                         <div class="col-auto ml-sm-auto">
                                             <div class="p-card-header pl-0">
-                                                {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +191,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

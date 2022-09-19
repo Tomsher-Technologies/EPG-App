@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Transactions extends Component
 {
+    public $member;
     public $transactions;
     public $allTransactions;
 
@@ -18,8 +19,11 @@ class Transactions extends Component
         $this->render();
     }
 
-    public function mount($transactions)
+    public function mount($member)
     {
+        $this->member = $member;
+        $member->load(['transaction', 'transaction.benefit', 'transaction.location']);
+        $transactions = $member->transaction;
         $this->allTransactions = $transactions;
         $this->transactions = $transactions;
         $this->locations = Location::all();

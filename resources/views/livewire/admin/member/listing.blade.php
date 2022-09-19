@@ -74,11 +74,19 @@
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                {{ getExpiryDateString($member->member_details->purchase_date, $member->member_details->expiry_date) }} 
-                                <br/>
-                                <small class="js-lists-values-email text-50">
-                                    {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
-                                </small>
+                                <div class="d-flex flex-column">
+                                    @php
+                                        $status = getExpiryDateString($member->member_details->purchase_date, $member->member_details->expiry_date);
+                                    @endphp
+                                    <div class="text-{{ $status['status'] ? 'success' : 'danger' }}">
+                                        {{ $status['msg'] }}
+                                    </div>
+                                    <small class="js-lists-values-email text-50">
+                                        {{ $status['status'] ? 'Expires on:' : 'Expired on' }}
+                                        {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
+                                    </small>
+                                </div>
+
                             </div>
                         </td>
                         <td>

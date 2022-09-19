@@ -39,6 +39,10 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
         Route::get('admindashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('members', MemberController::class)->only(['index', 'create', 'show', 'edit']);
+        Route::group(['prefix' => 'members', 'as' => 'members.'], function () {
+            Route::get('{member}/transactions/', [MemberController::class, 'transactions'])->name('transactions');
+            Route::get('{member}/logins/', [MemberController::class, 'logins'])->name('logins');
+        });
 
         Route::resource('receptionist', Receptionist::class)->only(['index', 'create', 'edit']);
 

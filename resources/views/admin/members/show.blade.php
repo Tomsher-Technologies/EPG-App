@@ -1,7 +1,7 @@
 @extends('layout.admin.app')
 
 @section('content')
-    <div class="page-section container page__container">
+    <div class="page-section container page__container" id="container-wide">
         <div class="page-separator">
             <div class="page-separator__text">customer VIew</div>
         </div>
@@ -153,6 +153,21 @@
 
                 </div>
             </div>
+
+            <div class="col-lg-12">
+                <div class="list-group list-group-form">
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <div class="flex">
+                                <a href="{{ route('members.transactions', $member) }}" class="btn btn-secondary">View
+                                    Previous Transactions</a>
+                                <a href="{{ route('members.logins', $member) }}" class="btn btn-secondary">View Login History</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -164,23 +179,13 @@
         </div>
         @livewire('admin.member.benefit-list', [
             'package' => $member->member_details->package,
-            'user' => $member
+            'user' => $member,
         ])
-
-        {{-- <div class="page-separator mt-3">
-            <div class="page-separator__text">
-                Login History
-            </div>
-        </div>
-        @livewire('admin.users.authentication-log', ['user' => $member]) --}}
-        {{-- @livewire('member.transactions', ['transactions' => $member->transaction]) --}}
-
     </div>
 @endsection
 @push('header')
     @livewireStyles
     @livewireScripts
-
     <style>
         .status.avatar {
             width: auto;
