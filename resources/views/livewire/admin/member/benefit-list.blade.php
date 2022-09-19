@@ -52,9 +52,9 @@
                         <tr>
                             <td class="pr-0">{{ $loop->iteration }}</td>
                             <td>
-                                <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
+                                <p>
                                     {{ $benefit->name }}
-                                </div>
+                                </p>
                             </td>
                             <td>
                                 <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
