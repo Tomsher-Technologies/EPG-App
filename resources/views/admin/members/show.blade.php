@@ -161,7 +161,8 @@
                             <div class="flex">
                                 <a href="{{ route('members.transactions', $member) }}" class="btn btn-secondary">View
                                     Previous Transactions</a>
-                                <a href="{{ route('members.logins', $member) }}" class="btn btn-secondary">View Login History</a>
+                                <a href="{{ route('members.logins', $member) }}" class="btn btn-secondary">View Login
+                                    History</a>
                             </div>
                         </div>
                     </div>
@@ -193,6 +194,10 @@
 
         #container-wide {
             max-width: 1200px;
+        }
+
+        .table-nowrap th {
+            white-space: unset;
         }
     </style>
 @endpush
