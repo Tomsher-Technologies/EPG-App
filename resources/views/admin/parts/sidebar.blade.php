@@ -75,7 +75,7 @@
                                 <span class="sidebar-menu-text">Locations</span>
                             </a>
                         </li>
-                        <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}"
+                        <li class="sidebar-menu-item {{ request()->routeIs('benefits*') ? 'active' : '' }}"
                             data-title="Benefits" data-placement="right" data-container="body" data-boundary="window">
                             <a class="sidebar-menu-button" href="#sm_benefits" data-toggle="tab" role="tab"
                                 aria-controls="sm_benefits">

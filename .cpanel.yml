@@ -1,4 +1,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/tomshe7/public_html/raffles/
-    - /bin/cp -r public/ $DEPLOYPATH
+    - /bin/cp -r public/* $DEPLOYPATH
