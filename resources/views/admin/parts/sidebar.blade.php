@@ -29,7 +29,7 @@
                             <span class="sidebar-menu-text">Members</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item" data-title="Rewards" data-placement="right" data-container="body"
+                    {{-- <li class="sidebar-menu-item" data-title="Rewards" data-placement="right" data-container="body"
                         data-boundary="window">
                         <a class="sidebar-menu-button" href="#sm_rewards-manage" data-toggle="tab" role="tab"
                             aria-controls="sm_rewards-manage" aria-selected="false">
@@ -44,23 +44,47 @@
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">style</i>
                             <span class="sidebar-menu-text">Memberships</span>
                         </a>
-                    </li>
-                    <li class="sidebar-menu-item {{ request()->routeIs('receptionist*') ? 'active' : '' }}" data-title="Receptionist" data-placement="right" data-container="body"
-                        data-boundary="window">
-                        <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
-                            aria-controls="sm_receptionist">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
-                            <span class="sidebar-menu-text">Receptionist</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}" data-title="Locations" data-placement="right" data-container="body"
-                        data-boundary="window">
-                        <a class="sidebar-menu-button" href="#sm_location" data-toggle="tab" role="tab"
-                            aria-controls="sm_location">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
-                            <span class="sidebar-menu-text">Locations</span>
-                        </a>
-                    </li>
+                    </li> --}}
+
+                    @if (auth()->user()->isA('superadmin'))
+                        <li class="sidebar-menu-item {{ request()->routeIs('receptionist*') ? 'active' : '' }}"
+                            data-title="Receptionist" data-placement="right" data-container="body"
+                            data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_receptionist" data-toggle="tab" role="tab"
+                                aria-controls="sm_receptionist">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervisor_account</i>
+                                <span class="sidebar-menu-text">Receptionist</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item {{ request()->routeIs('package*') ? 'active' : '' }}"
+                            data-title="Packages" data-placement="right" data-container="body" data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_package" data-toggle="tab" role="tab"
+                                aria-controls="sm_package">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervisor_account</i>
+                                <span class="sidebar-menu-text">Packages</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}"
+                            data-title="Locations" data-placement="right" data-container="body" data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_location" data-toggle="tab" role="tab"
+                                aria-controls="sm_location">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                                <span class="sidebar-menu-text">Locations</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item {{ request()->routeIs('location*') ? 'active' : '' }}"
+                            data-title="Benefits" data-placement="right" data-container="body" data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_benefits" data-toggle="tab" role="tab"
+                                aria-controls="sm_benefits">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                                <span class="sidebar-menu-text">Benefits</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -152,44 +176,90 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tab-pane" id="sm_location">
-                    <div class="sidebar-heading">Locations</div>
-                    <ul class="sidebar-menu">
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{{ route('location.index') }}">
-                                <span
-                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
-                                <span class="sidebar-menu-text">All Locations</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{{ route('location.create') }}">
-                                <span
-                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
-                                <span class="sidebar-menu-text">Add Locations</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-pane" id="sm_receptionist">
-                    <div class="sidebar-heading">Receptionist</div>
-                    <ul class="sidebar-menu">
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{{ route('receptionist.index') }}">
-                                <span
-                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
-                                <span class="sidebar-menu-text">All receptionist</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{{ route('receptionist.create') }}">
-                                <span
-                                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
-                                <span class="sidebar-menu-text">Add receptionist</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
+                @if (auth()->user()->isA('superadmin'))
+                    <div class="tab-pane" id="sm_receptionist">
+                        <div class="sidebar-heading">Receptionist</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('receptionist.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">All receptionist</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('receptionist.create') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">person_add</span>
+                                    <span class="sidebar-menu-text">Add receptionist</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="sm_package">
+                        <div class="sidebar-heading">Packages</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('package.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
+                                    <span class="sidebar-menu-text">All Packages</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('package.create') }}">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
+                                    <span class="sidebar-menu-text">Add Packages</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="sm_location">
+                        <div class="sidebar-heading">Locations</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('location.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">pin_drop</span>
+                                    <span class="sidebar-menu-text">All Locations</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('location.create') }}">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">add</span>
+                                    <span class="sidebar-menu-text">Add Locations</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="sm_benefits">
+                        <div class="sidebar-heading">Benefits</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('benefit.category.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Categories</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('benefit.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Bebefits</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('benefit.create') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Add Bebefit</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -72,7 +72,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <a href="{{ route('location.index') }}" class="btn btn-sm btn-outline-secondary">View all locations</a>
+                                        <a href="{{ route('location.index') }}"
+                                            class="btn btn-sm btn-outline-secondary">View all locations</a>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +102,7 @@
                         </div>
                     </div>
 
-                    <div class="row card-group-row">
+                    {{-- <div class="row card-group-row">
                         <div class="col-md-6 card-group-row__col">
                             <div class="card card-group-row__card">
                                 <div class="card-header d-flex">
@@ -118,7 +119,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                    {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                 </div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <div class="mb-4pt">
@@ -177,7 +177,6 @@
                                         </div>
                                         <div class="col-auto ml-sm-auto">
                                             <div class="p-card-header pl-0">
-                                                {{-- <a href="#"><i class="material-icons text-50">more_horiz</i></a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +191,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -209,25 +208,19 @@
                             <thead>
                                 <tr>
                                     <th style="width: 18px" class="pr-0">
-                                        <a href="javascript:void(0)" 
-                                            data-sort="js-lists-values-count">ID</a>
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-count">ID</a>
                                     </th>
 
                                     <th>
-                                        <a href="javascript:void(0)" 
-                                            data-sort="js-lists-values-name">Name</a>
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-name">Name</a>
                                     </th>
 
-                                    <th style="width: 150px">
-                                        <a href="javascript:void(0)" 
-                                            data-sort="js-lists-values-company">EARNED POINTS</a>
+                                    <th>
+                                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-company">
+                                            Package
+                                        </a>
                                     </th>
 
-                                    <th style="width: 48px">
-                                        <a href="javascript:void(0)"
-                                            data-sort="js-lists-values-phone">USED
-                                            POINTS</a>
-                                    </th>
                                     <th style="width: 24px"></th>
                                 </tr>
                             </thead>
@@ -258,21 +251,7 @@
 
                                         <td>
                                             <div class="media align-items-center" style="white-space: nowrap">
-                                                <div class="avatar avatar-sm mr-8pt">
-                                                    <span class="avatar-title rounded bg-warning">
-                                                        {{ (int) $member->member_details->total_earned }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="media align-items-center" style="white-space: nowrap">
-                                                <div class="avatar avatar-sm mr-8pt">
-                                                    <span class="avatar-title rounded bg-primary text-white">
-                                                        {{ (int) $member->member_details->total_redeemed }}
-                                                    </span>
-                                                </div>
+                                                {{ $member->member_details->package->name }}
                                             </div>
                                         </td>
                                     </tr>

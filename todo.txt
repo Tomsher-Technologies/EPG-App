@@ -1,1 +1,10 @@
-Permissions
+// Packages add to sidebar
+// Benifits CURD
+// Benifits to packages
+// Add expiry date to member when creating new member
+// Membership expiry
+Qr scan view
+PDF
+// Show price while creating new Member
+Membership renew
+// user login record

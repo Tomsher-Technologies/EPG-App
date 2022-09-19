@@ -5,7 +5,7 @@
         <div class="page-separator">
             <div class="page-separator__text">All Receptionist</div>
         </div>
-        @livewire('location.receptionist.listing')
+        @livewire('admin.location.receptionist.listing')
     </div>
 @endsection
 @push('header')

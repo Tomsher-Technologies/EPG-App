@@ -6,7 +6,14 @@
             <div class="page-separator__text">Edit receptionist</div>
 
         </div>
-        @livewire('location.receptionist.edit', ['receptionist' => $receptionist])
+        @livewire('admin.location.receptionist.edit', ['receptionist' => $receptionist])
+
+        <div class="page-separator mt-4">
+            <div class="page-separator__text">
+                Login History
+            </div>
+        </div>
+        @livewire('admin.users.authentication-log', ['user' => $receptionist])
     </div>
 @endsection
 @push('header')
