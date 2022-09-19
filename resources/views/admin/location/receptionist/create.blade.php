@@ -5,7 +5,7 @@
         <div class="page-separator">
             <div class="page-separator__text">Create new receptionist</div>
         </div>
-        @livewire('location.receptionist.create', ['location_id' => 4])
+        @livewire('admin.location.receptionist.create', ['location_id' => 4])
     </div>
 @endsection
 @push('header')

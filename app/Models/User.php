@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Location\Location;
+use App\Models\Location\Package;
 use App\Models\Member\Member;
 use App\Models\Member\Transaction;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,11 +15,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\URL;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
-
+use Wildside\Userstamps\Userstamps;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, SoftDeletes, Userstamps, AuthenticationLoggable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +52,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'purchase_date' => 'datetime',
+        'expiry_date' => 'datetime',
     ];
 
     public function location()
@@ -70,4 +75,10 @@ class User extends Authenticatable
     {
         return URL::to('/storage/qr-code/img-' . $this->id . '.svg');
     }
+
+    public function getExpiryDateString()
+    {
+        return $this->created_at->diffInDays($this->created_at->add('1 Y'));
+    }
+
 }

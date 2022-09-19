@@ -36,15 +36,15 @@ class AddUserstampToTables extends Migration
     {
         Schema::table('locations', function (Blueprint $table) {
             $table->dropColumn('created_by');
-            $table->dropColumn('created_by');
+            $table->dropColumn('updated_by');
         });
         Schema::table('members', function (Blueprint $table) {
             $table->dropColumn('created_by');
-            $table->dropColumn('created_by');
+            $table->dropColumn('updated_by');
         });
         Schema::table('packages', function (Blueprint $table) {
             $table->dropColumn('created_by');
-            $table->dropColumn('created_by');
+            $table->dropColumn('updated_by');
         });
     }
 }

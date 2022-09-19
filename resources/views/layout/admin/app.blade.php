@@ -67,7 +67,7 @@
         <script src="{{ getAdminAsset('vendor/moment.min.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/moment-range.js') }}"></script>
         <script src="{{ getAdminAsset('vendor/flatpickr/flatpickr.min.js') }}"></script>
-        <script src="{{ getAdminAsset('js/flatpickr.js') }}"></script> --}}
+        <script src="{{ getAdminAsset('js/flatpickr.js') }}"></script>
         {{-- <script src="{{ getAdminAsset('vendor/sweetalert.min.js') }}"></script> --}}
         {{-- <script src="{{ getAdminAsset('js/sweetalert.js') }}"></script> --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

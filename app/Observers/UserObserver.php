@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
+use Bouncer;
 
 class UserObserver
 {
@@ -67,5 +68,7 @@ class UserObserver
         Cache::forget('recptionistCount');
         Cache::forget('memberCount');
         Cache::forget('recentMembers');
+        Bouncer::refresh();
+
     }
 }

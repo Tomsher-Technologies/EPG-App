@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Benefits\Benefit;
 use App\Models\Location\Location;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -18,9 +19,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Location::class);
+            $table->foreignIdFor(Benefit::class);
             $table->foreignId('receptionist_id')->references('id')->on('users');
-            $table->decimal('points', $precision = 8, $scale = 2);
             $table->timestamps();
         });
     }
