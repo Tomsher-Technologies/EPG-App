@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="page-section container page__container" id="container-wide">
+
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <div class="page-separator">
             <div class="page-separator__text">customer VIew</div>
         </div>
