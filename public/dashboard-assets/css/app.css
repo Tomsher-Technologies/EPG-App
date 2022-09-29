@@ -37360,3 +37360,8 @@ background: linear-gradient(165deg, rgba(215,190,105,1) 27%, rgba(197,152,94,1) 
     padding: 1rem;
     border-radius: .5rem
 }
+
+.swal2-actions button{
+    margin-left: 5px;
+    margin-right: 5px;
+}

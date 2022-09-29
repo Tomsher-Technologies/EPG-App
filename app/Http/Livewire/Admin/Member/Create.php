@@ -106,7 +106,11 @@ class Create extends Component
         $this->reset('phone');
         $this->reset('nationality');
         $this->reset('package');
-        $this->dispatchBrowserEvent('memberUpdated');
+        // $this->dispatchBrowserEvent('memberUpdated');
+
+        return redirect()->route('members.show', $user)->with([
+            'status' => "Member Created"
+        ]);
     }
 
     public function render()

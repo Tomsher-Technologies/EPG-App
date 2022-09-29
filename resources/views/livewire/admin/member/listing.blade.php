@@ -69,7 +69,7 @@
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                {{ $member->member_details->package->name }}
+                                {{ $member->member_details ? $member->member_details->package->name : ""}}
                             </div>
                         </td>
                         <td>
@@ -104,13 +104,13 @@
                             </div>
                         </td>
                         <td>
-                            <a type="button" class="btn btn-secondary" href="{{ route('members.edit', $member) }}">
-                                <i class="material-icons">mode_edit</i>
-                            </a>
                             <button class="btn btn-accent" type="submit"
                                 wire:click="$emit('triggerDelete',{{ $member->id }})">
                                 <i class="material-icons">delete_forever</i>
                             </button>
+                            <a type="button" class="btn btn-secondary" href="{{ route('members.edit', $member) }}">
+                                <i class="material-icons">mode_edit</i>
+                            </a>
                             <a type="button" class="btn btn-primary" href="{{ route('members.show', $member) }}">
                                 <i class="material-icons">pageview</i>
                             </a>

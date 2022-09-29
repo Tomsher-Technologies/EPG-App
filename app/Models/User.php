@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Location\Location;
 use App\Models\Location\Package;
 use App\Models\Member\Member;
+use App\Models\Member\Purchase;
 use App\Models\Member\Transaction;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -69,6 +70,11 @@ class User extends Authenticatable
     function transaction()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    function purchases()
+    {
+        return $this->hasMany(Purchase::class);
     }
 
     public function getQRUrl()

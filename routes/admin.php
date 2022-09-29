@@ -3,13 +3,12 @@
 use App\Http\Controllers\Admin\Benefits\BenefitCategoryController;
 use App\Http\Controllers\Admin\Benefits\BenefitController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\Location\LocationCategoryController;
 use App\Http\Controllers\Admin\Location\LocationController;
 use App\Http\Controllers\Admin\Location\PackageController;
 use App\Http\Controllers\Admin\Location\Receptionist;
 use App\Http\Controllers\Admin\Member\MemberController;
+use App\Http\Controllers\Admin\Member\PurchaseController;
 use App\Http\Controllers\Admin\User\ProfileController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +31,7 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
 
     Route::get('/', function () {
         return redirect()->route('login');
-    });
+    })->name('admin.login');
 
     Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
 
@@ -42,6 +41,8 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
         Route::group(['prefix' => 'members', 'as' => 'members.'], function () {
             Route::get('{member}/transactions/', [MemberController::class, 'transactions'])->name('transactions');
             Route::get('{member}/logins/', [MemberController::class, 'logins'])->name('logins');
+            Route::resource('{member}/purchase', PurchaseController::class)->only(['index', 'create']);
+            Route::get('{member}/qr/', [MemberController::class, 'printQr'])->name('printQr');
         });
 
         Route::resource('receptionist', Receptionist::class)->only(['index', 'create', 'edit']);
