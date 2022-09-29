@@ -124,7 +124,7 @@ class MemberController extends Controller
 
         $qr = storage_path('qr-code/img-' . $member->id . '.svg');
 
-        $qr = Storage::disk('public')->path('qr-code/img-' . $member->id . '.svg');
+        $qr = Storage::disk('public')->path('qr-code/img-' . $member->id . '.png');
 
         $cerificate = Storage::disk('public')->path('sample.pdf');
         $pdf = new Fpdi();
