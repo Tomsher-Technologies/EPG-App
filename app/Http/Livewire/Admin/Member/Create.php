@@ -91,8 +91,9 @@ class Create extends Component
             'purchase_date' => Carbon::now(),
         ]);
 
-        $output_file = 'qr-code/img-' . $user->id . '.svg';
+        $output_file = 'qr-code/img-' . $user->id . '.png';
         $qrString = QrCode::size(150)
+            ->format('png')
             ->style('round')
             ->eye('circle')
             // ->gradient(215, 190, 105, 160, 113, 60, 'vertical')
