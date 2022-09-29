@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin\Member;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
-use App\Models\Location\Location;
-use App\Models\Location\Package;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+use setasign\Fpdi\Fpdi;
 
 class MemberController extends Controller
 {
@@ -116,5 +116,28 @@ class MemberController extends Controller
             ->with('member_details')
             ->firstOrFail();
         return redirect()->route('members.show', $user);
+    }
+
+    public function printQr(User $member)
+    {
+        // $qr = URL::to('storage/qr-code/img-' . $member->id . '.svg');
+
+        $qr = storage_path('qr-code/img-' . $member->id . '.svg');
+
+        $qr = Storage::disk('public')->path('qr-code/img-' . $member->id . '.svg');
+
+        $cerificate = Storage::disk('public')->path('sample.pdf');
+        $pdf = new Fpdi();
+        $pdf->setSourceFile($cerificate);
+        $tplId = $pdf->importPage(1);
+        $size = $pdf->getTemplateSize($tplId);
+        $pdf->AddPage();
+        $pdf->SetMargins(0, 0, 0);
+        $pdf->SetXY(0, 0);
+        $pdf->SetCompression(false);
+        $pdf->useTemplate($tplId, null, null, $size['width'], $size['height'], FALSE);
+
+        $pdf->Image($qr, 0, 0);
+        $pdf->Output('D');
     }
 }

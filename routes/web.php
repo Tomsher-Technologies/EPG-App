@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd("Home");
+    return redirect()->route('admin.login');
 })->name('home');
 
 

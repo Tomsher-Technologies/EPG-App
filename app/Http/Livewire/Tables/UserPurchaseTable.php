@@ -39,7 +39,7 @@ final class UserPurchaseTable extends PowerGridComponent
     {
         $this
             // ->showCheckBox()
-            ->showPerPage(50)
+            ->showPerPage()
             ->showRecordCount('full');
         // ->showSearchInput()
         // ->showExportOption('download', ['excel', 'csv']);

@@ -31,7 +31,7 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
 
     Route::get('/', function () {
         return redirect()->route('login');
-    });
+    })->name('admin.login');
 
     Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
 
@@ -42,6 +42,7 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
             Route::get('{member}/transactions/', [MemberController::class, 'transactions'])->name('transactions');
             Route::get('{member}/logins/', [MemberController::class, 'logins'])->name('logins');
             Route::resource('{member}/purchase', PurchaseController::class)->only(['index', 'create']);
+            Route::get('{member}/qr/', [MemberController::class, 'printQr'])->name('printQr');
         });
 
         Route::resource('receptionist', Receptionist::class)->only(['index', 'create', 'edit']);

@@ -166,8 +166,11 @@
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <div class="flex">
+                                <a href="{{ route('members.printQr', $member) }}" class="btn btn-secondary">View / Print membership Card</a>
                                 <a href="{{ route('members.transactions', $member) }}" class="btn btn-secondary">View
                                     Previous Transactions</a>
+                                <a href="{{ route('members.purchase.index', $member) }}" class="btn btn-secondary">View / Add
+                                    Purchases</a>
                                 <a href="{{ route('members.logins', $member) }}" class="btn btn-secondary">View Login
                                     History</a>
                             </div>

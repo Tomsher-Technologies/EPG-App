@@ -220,8 +220,11 @@
                                             Package
                                         </a>
                                     </th>
+                                    <th>
+                                        <a href="javascript:void(0)">
 
-                                    <th style="width: 24px"></th>
+                                        </a>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="list" id="contacts">
@@ -253,6 +256,16 @@
                                             <div class="media align-items-center" style="white-space: nowrap">
                                                 {{ $member->member_details->package->name }}
                                             </div>
+                                        </td>
+                                        <td>
+                                            <a type="button" class="btn btn-secondary"
+                                                href="{{ route('members.edit', $member) }}">
+                                                <i class="material-icons">mode_edit</i>
+                                            </a>
+                                            <a type="button" class="btn btn-primary"
+                                                href="{{ route('members.show', $member) }}">
+                                                <i class="material-icons">pageview</i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -56,9 +56,12 @@ class Listing extends Component
         }
 
         if ($this->search !== '') {
+            $search = $this->search;
             $query->where('name', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('member_details.phone', 'LIKE', '%' . $this->search . '%');
+                ->orWhereHas('member_details', function ($q) use ($search) {
+                    return $q->where('phone', 'LIKE', '%' . $search . '%');
+                });
         }
 
         $members = $query->paginate(10);
