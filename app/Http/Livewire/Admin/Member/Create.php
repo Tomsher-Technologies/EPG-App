@@ -94,10 +94,10 @@ class Create extends Component
         $output_file = 'qr-code/img-' . $user->id . '.png';
         $qrString = QrCode::size(150)
             ->format('png')
-            ->style('round')
-            ->eye('circle')
+            // ->style('round')
+            // ->eye('circle')
             // ->gradient(215, 190, 105, 160, 113, 60, 'vertical')
-            ->errorCorrection('H')
+            // ->errorCorrection('H')
             ->generate(route('qrscan', $slug));
         Storage::disk('public')->put($output_file, $qrString);
 

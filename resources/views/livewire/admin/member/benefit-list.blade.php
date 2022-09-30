@@ -79,11 +79,14 @@
                             <td>
                                 <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
                                     <div class="flex flex-column">
-                                        <div>
+                                        <div style="font-size: 14px;text-transform: uppercase;" class="text-{{ $usedBenefits[$benefit->id]['status'] ? 'success' : 'danger' }}">
                                             {{ $usedBenefits[$benefit->id]['status'] ? 'Available' : 'Used' }}
                                         </div>
-                                        <div>
+                                        <div style="font-size: 14px;text-transform: uppercase;">
                                             {{ isset($usedBenefits[$benefit->id]['remining_validity']) ? 'Remaining:' . $usedBenefits[$benefit->id]['remining_validity'] : '' }}
+                                        </div>
+                                        <div style="font-size: 14px;text-transform: uppercase;">
+                                            {{ isset($usedBenefits[$benefit->id]['used_validity']) ? 'Used:' . $usedBenefits[$benefit->id]['used_validity'] : '' }}
                                         </div>
                                     </div>
                                 </div>

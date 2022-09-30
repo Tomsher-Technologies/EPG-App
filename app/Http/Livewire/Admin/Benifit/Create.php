@@ -43,7 +43,7 @@ class Create extends Component
         return [
             'name' => ['required', 'unique:benefits,name'],
             'benefit_category_id' => ['required'],
-            'location_id' => ['required'],
+            'location_id' => ['nullable'],
             'discount_type' => ['required'],
             'validity_type' => ['required'],
             'status' => ['required'],

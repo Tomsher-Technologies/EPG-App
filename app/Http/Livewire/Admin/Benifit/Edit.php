@@ -35,7 +35,7 @@ class Edit extends Component
             'benefit.name' => ['required', 'unique:benefits,name,' . $this->benefit->id],
             'benefit.status' => ['required'],
             'benefit.benefit_category_id' => ['required'],
-            'benefit.location_id' => ['required'],
+            'benefit.location_id' => ['nullable'],
             'benefit.discount_type' => ['required'],
             'benefit.validity_type' => ['required'],
             'benefit.status' => ['required'],

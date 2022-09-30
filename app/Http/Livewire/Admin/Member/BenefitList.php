@@ -83,6 +83,7 @@ class BenefitList extends Component
             if ($benefit->isLimited()) {
                 $usedBenefits[$benefit->id]['max_validity'] = $benefit->validity;
                 $usedBenefits[$benefit->id]['remining_validity'] = $benefit->validity - $count;
+                $usedBenefits[$benefit->id]['used_validity'] = $benefit->validity - $usedBenefits[$benefit->id]['remining_validity'];
                 if ($usedBenefits[$benefit->id]['remining_validity'] > 0) {
                     $usedBenefits[$benefit->id]['status'] = 1;
                 }
@@ -100,6 +101,7 @@ class BenefitList extends Component
                     if ($c_transaction->count() < $benefit->validity) {
                         $usedBenefits[$benefit->id]['status'] = 1;
                         $usedBenefits[$benefit->id]['remining_validity'] = $benefit->validity - $c_transaction->count();
+                        $usedBenefits[$benefit->id]['used_validity'] = $benefit->validity - $usedBenefits[$benefit->id]['remining_validity'];
                     }
                 }
             }
@@ -116,6 +118,7 @@ class BenefitList extends Component
                     if ($c_transaction->count() < $benefit->validity) {
                         $usedBenefits[$benefit->id]['status'] = 1;
                         $usedBenefits[$benefit->id]['remining_validity'] = $benefit->validity - $c_transaction->count();
+                        $usedBenefits[$benefit->id]['used_validity'] = $benefit->validity - $usedBenefits[$benefit->id]['remining_validity'];
                     }
                 }
             }
@@ -132,6 +135,7 @@ class BenefitList extends Component
                     if ($c_transaction->count() < $benefit->validity) {
                         $usedBenefits[$benefit->id]['status'] = 1;
                         $usedBenefits[$benefit->id]['remining_validity'] = $benefit->validity - $c_transaction->count();
+                        $usedBenefits[$benefit->id]['used_validity'] = $benefit->validity - $usedBenefits[$benefit->id]['remining_validity'];
                     }
                 }
             }
@@ -148,6 +152,7 @@ class BenefitList extends Component
                     if ($c_transaction->count() < $benefit->validity) {
                         $usedBenefits[$benefit->id]['status'] = 1;
                         $usedBenefits[$benefit->id]['remining_validity'] = $benefit->validity - $c_transaction->count();
+                        $usedBenefits[$benefit->id]['used_validity'] = $benefit->validity - $usedBenefits[$benefit->id]['remining_validity'];
                     }
                 }
             }
