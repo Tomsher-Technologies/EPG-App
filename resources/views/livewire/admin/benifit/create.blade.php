@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label class="form-label" for="select01">Locations</label>
                 <select wire:model="location_id" id="select01" data-toggle="select" class="form-control">
-                    <option value="">Select a location</option>
+                    <option value="0">Select a location</option>
                     @foreach ($location as $loc)
                         <option value="{{ $loc->id }}">
                             {{ $loc->name }}</option>

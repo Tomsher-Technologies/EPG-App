@@ -26,11 +26,11 @@ class Transaction extends Model
 
     public function benefit()
     {
-        return $this->belongsTo(Benefit::class);
+        return $this->belongsTo(Benefit::class)->withTrashed();
     }
     
     public function location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class)->withTrashed();
     }
 }

@@ -136,8 +136,9 @@ class MemberController extends Controller
         $pdf->SetXY(0, 0);
         $pdf->SetCompression(false);
         $pdf->useTemplate($tplId, null, null, $size['width'], $size['height'], FALSE);
-
         $pdf->Image($qr, 0, 0);
-        $pdf->Output('D');
+        return response($pdf->Output('I', $member->name . '.pdf'))
+            ->header('Content-Type', 'application/pdf');
+        // $pdf->Output('I', 'generated.pdf');
     }
 }

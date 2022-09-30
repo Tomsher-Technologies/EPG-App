@@ -17,16 +17,7 @@
             <div class="col-lg-6">
                 <div class="list-group list-group-form">
 
-                    <div class="list-group-item">
-                        <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
-                            <div class="col-sm-6 d-flex align-items-center">
-                                <div class="flex pc-text-right">
-                                    {{ $member->id }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
@@ -72,7 +63,16 @@
                         </div>
                     </div>
 
-
+<div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
+                            <div class="col-sm-6 d-flex align-items-center">
+                                <div class="flex pc-text-right">
+                                    {{ $member->id }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -166,7 +166,7 @@
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <div class="flex">
-                                <a href="{{ route('members.printQr', $member) }}" class="btn btn-secondary">View / Print membership Card</a>
+                                <a href="{{ route('members.printQr', $member) }}" target='new' class="btn btn-secondary">View / Print membership Card</a>
                                 <a href="{{ route('members.transactions', $member) }}" class="btn btn-secondary">View
                                     Previous Transactions</a>
                                 <a href="{{ route('members.purchase.index', $member) }}" class="btn btn-secondary">View / Add
