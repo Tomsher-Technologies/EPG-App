@@ -46,7 +46,7 @@
                                             {{ $membersCount }}
                                         </div>
                                         <p class="card-title">
-                                            CUSTOMERS
+                                            MEMBERS
                                         </p>
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
@@ -54,7 +54,7 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <a href="{{ route('members.index') }}" class="btn btn-sm btn-outline-secondary">View
-                                            all customers</a>
+                                            all members</a>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                             {{ $stafCount }}
                                         </div>
                                         <p class="card-title">
-                                            STAFFS
+                                            RECEPTIONISTS
                                         </p>
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
@@ -95,7 +95,7 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <a href="{{ route('receptionist.index') }}"
-                                            class="btn btn-sm btn-outline-secondary">View all staffs</a>
+                                            class="btn btn-sm btn-outline-secondary">View all RECEPTIONISTS</a>
                                     </div>
                                 </div>
                             </div>

@@ -131,12 +131,13 @@ class MemberController extends Controller
         $pdf->setSourceFile($cerificate);
         $tplId = $pdf->importPage(1);
         $size = $pdf->getTemplateSize($tplId);
-        $pdf->AddPage();
+        // dd($size);
+        $pdf->AddPage($size['orientation'], array($size['width'], $size['height']));
         $pdf->SetMargins(0, 0, 0);
         $pdf->SetXY(0, 0);
         $pdf->SetCompression(false);
         $pdf->useTemplate($tplId, null, null, $size['width'], $size['height'], FALSE);
-        $pdf->Image($qr, 0, 0);
+        $pdf->Image($qr, ($size['width'] / 2 ) - 20 , ( $size['height'] / 2) - 20);
         return response($pdf->Output('I', $member->name . '.pdf'))
             ->header('Content-Type', 'application/pdf');
         // $pdf->Output('I', 'generated.pdf');

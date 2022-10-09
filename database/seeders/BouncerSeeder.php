@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Bouncer;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class BouncerSeeder extends Seeder
 {
@@ -19,22 +20,38 @@ class BouncerSeeder extends Seeder
     public function run()
     {
         
-        $admin = Bouncer::role()->firstOrCreate([
-            'name' => 'superadmin',
-            'title' => 'Administrator',
+        // $admin = Bouncer::role()->firstOrCreate([
+        //     'name' => 'superadmin',
+        //     'title' => 'Administrator',
+        // ]);
+        // $admin = Bouncer::role()->firstOrCreate([
+        //     'name' => 'receptionist',
+        //     'title' => 'Receptionist',
+        // ]);
+        // $admin = Bouncer::role()->firstOrCreate([
+        //     'name' => 'member',
+        //     'title' => 'Member',
+        // ]);
+        
+         $user  = User::create([
+            'name' => 'it@raffles.com',
+            'email' => 'it@raffles.com',
+            'password' => Hash::make('it@raffles.com'),
+            'status' => 1,
+            'location_id' => 0
         ]);
-        $admin = Bouncer::role()->firstOrCreate([
-            'name' => 'receptionist',
-            'title' => 'Receptionist',
-        ]);
-        $admin = Bouncer::role()->firstOrCreate([
-            'name' => 'member',
-            'title' => 'Member',
-        ]);
-
-        $user = User::whereId(1)->first();
         Bouncer::assign('superadmin')->to($user);
-        Bouncer::allow('superadmin')->everything();
+        
+        $user  = User::create([
+            'name' => 'maz@raffles.com',
+            'email' => 'maz@raffles.com',
+            'password' => Hash::make('maz@raffles.com'),
+            'status' => 1,
+            'location_id' => 0
+        ]);
+        Bouncer::assign('superadmin')->to($user);
+        
+        // Bouncer::allow('superadmin')->everything();
         
     }
 }
