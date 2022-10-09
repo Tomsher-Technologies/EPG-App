@@ -84,6 +84,15 @@
                                 <span class="sidebar-menu-text">Benefits</span>
                             </a>
                         </li>
+                        <li class="sidebar-menu-item {{ request()->routeIs('adminusers*') ? 'active' : '' }}"
+                            data-title="Admin Users" data-placement="right" data-container="body" data-boundary="window">
+                            <a class="sidebar-menu-button" href="#sm_adminusers" data-toggle="tab" role="tab"
+                                aria-controls="sm_adminusers">
+                                <i
+                                    class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_pin_circle</i>
+                                <span class="sidebar-menu-text">Admin Users</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div>
@@ -255,6 +264,25 @@
                                     <span
                                         class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
                                     <span class="sidebar-menu-text">Add Benefits</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="sm_adminusers">
+                        <div class="sidebar-heading">Admin Users</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('adminusers.index') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Admin Users</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{{ route('adminusers.create') }}">
+                                    <span
+                                        class="material-icons sidebar-menu-icon sidebar-menu-icon--left">supervisor_account</span>
+                                    <span class="sidebar-menu-text">Add Admin Users</span>
                                 </a>
                             </li>
                         </ul>

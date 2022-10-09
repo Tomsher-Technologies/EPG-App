@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\Benefits\BenefitCategoryController;
 use App\Http\Controllers\Admin\Benefits\BenefitController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -46,6 +47,8 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
         });
 
         Route::resource('receptionist', Receptionist::class)->only(['index', 'create', 'edit']);
+
+        Route::resource('adminusers', AdminUserController::class)->only(['index', 'create', 'edit']);
 
         Route::resource('location', LocationController::class)->only(['index', 'create', 'edit']);
 

@@ -33,23 +33,23 @@ class BouncerSeeder extends Seeder
         //     'title' => 'Member',
         // ]);
         
-         $user  = User::create([
-            'name' => 'it@raffles.com',
-            'email' => 'it@raffles.com',
-            'password' => Hash::make('it@raffles.com'),
-            'status' => 1,
-            'location_id' => 0
-        ]);
-        Bouncer::assign('superadmin')->to($user);
+        //  $user  = User::create([
+        //     'name' => 'it@raffles.com',
+        //     'email' => 'it@raffles.com',
+        //     'password' => Hash::make('it@raffles.com'),
+        //     'status' => 1,
+        //     'location_id' => 0
+        // ]);
+        // Bouncer::assign('superadmin')->to($user);
         
-        $user  = User::create([
-            'name' => 'maz@raffles.com',
-            'email' => 'maz@raffles.com',
-            'password' => Hash::make('maz@raffles.com'),
-            'status' => 1,
-            'location_id' => 0
-        ]);
-        Bouncer::assign('superadmin')->to($user);
+        // $user  = User::create([
+        //     'name' => 'maz@raffles.com',
+        //     'email' => 'maz@raffles.com',
+        //     'password' => Hash::make('maz@raffles.com'),
+        //     'status' => 1,
+        //     'location_id' => 0
+        // ]);
+        // Bouncer::assign('superadmin')->to($user);
         
         // Bouncer::allow('superadmin')->everything();
         
