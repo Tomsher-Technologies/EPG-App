@@ -18,12 +18,6 @@
                     </ol>
                 </div>
             </div>
-
-            {{-- <div class="row" role="tablist">
-                <div class="col-auto">
-                    <a href="" class="btn btn-outline-secondary">New Report</a>
-                </div>
-            </div> --}}
         </div>
     </div>
 
@@ -49,14 +43,17 @@
                                             MEMBERS
                                         </p>
                                     </div>
-                                    {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <a href="{{ route('members.index') }}" class="btn btn-sm btn-outline-secondary">View
-                                            all members</a>
+                               
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                             @if (auth()->user()->isA('superadmin'))
+                                            <a href="{{ route('members.index') }}" class="btn btn-sm btn-outline-secondary">View
+                                                all members</a>
+                                                 @endif
+                                        </div>
                                     </div>
-                                </div>
+                               
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -70,12 +67,16 @@
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <a href="{{ route('location.index') }}"
-                                            class="btn btn-sm btn-outline-secondary">View all locations</a>
+                                
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            @if (auth()->user()->isA('superadmin'))
+                                            <a href="{{ route('location.index') }}"
+                                                class="btn btn-sm btn-outline-secondary">View all locations</a>
+                                                @endif
+                                        </div>
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -92,12 +93,16 @@
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
+                               
                                 <div class="card-body">
                                     <div class="text-center">
+                                         @if (auth()->user()->isA('superadmin'))
                                         <a href="{{ route('receptionist.index') }}"
                                             class="btn btn-sm btn-outline-secondary">View all RECEPTIONISTS</a>
+                                              @endif
                                     </div>
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
