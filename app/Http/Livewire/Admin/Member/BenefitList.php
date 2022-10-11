@@ -171,7 +171,7 @@ class BenefitList extends Component
             // }
         }
 
-        Log::debug($usedBenefits);
+        // Log::debug($usedBenefits);
 
         // dd($usedBenefits);
 
@@ -181,4 +181,10 @@ class BenefitList extends Component
                 'usedBenefits' => $usedBenefits,
             ]);
     }
+    
+    public function paginationView()
+    {
+        return 'admin.parts.custom-pagination-links';
+    }
+    
 }
