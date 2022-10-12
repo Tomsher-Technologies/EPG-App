@@ -1,6 +1,6 @@
 <div class="card mb-0">
-    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
-        data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-count"
+        data-lists-values='["js-lists-values-count"]'>
         <div class="card-header">
             <form class="form-inline">
                 <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
@@ -21,33 +21,33 @@
             <thead>
                 <tr>
                     <th class="pr-0">
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-count">ID</a>
+                        <a href="javascript:void(0)">ID</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Name</a>
+                        <a href="javascript:void(0)">Name</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-company">
+                        <a href="javascript:void(0)">
                             Package
                         </a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">
+                        <a href="javascript:void(0)">
                             Validity
                         </a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-phone">Status</a>
+                        <a href="javascript:void(0)">Status</a>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">ACTION</a>
+                        <a href="javascript:void(0)">ACTION</a>
                     </th>
                 </tr>
             </thead>
             <tbody class="list" id="contacts">
                 @foreach ($members as $member)
                     <tr>
-                        <td class="pr-0">{{ $loop->iteration }}</td>
+                        <td class="pr-0">{{ str_pad($member->id,4,'0',STR_PAD_LEFT) }}</td>
                         <td>
                             <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
                                 <div class="avatar avatar-sm mr-8pt">
@@ -62,6 +62,9 @@
                                         </p>
                                         <small class="js-lists-values-email text-50">
                                             {{ $member->email }}
+                                        </small>
+                                        <small class="js-lists-values-email text-50">
+                                            {{ $member->member_details ? $member->member_details->phone : '' }}
                                         </small>
                                     </div>
                                 </div>
@@ -125,13 +128,14 @@
     <div class="card-footer p-8pt">
         {{ $members->links() }}
     </div>
-
-    <script type="text/javascript">
+    
+    
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             @this.on('triggerDelete', id => {
                 Swal.fire({
                     title: 'Are You Sure?',
-                    text: 'Member record will be deleted!',
+                    text: 'Member will be deleted!',
                     icon: "error",
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -140,14 +144,58 @@
                 }).then((result) => {
                     if (result.value) {
                         @this.call('deleteMember', id)
-                        Swal.fire({
-                            title: 'Member deleted successfully!',
-                            icon: 'success'
-                        });
                     }
                 });
             });
         })
+
+        window.addEventListener('modelDeleted', e => {
+            Swal.fire({
+                title: 'Member deleted successfully!',
+                icon: 'success'
+            });
+        })
+        window.addEventListener('modelDeletedFailed', e => {
+            Swal.fire({
+                title: 'Member delete failed, please try again!',
+                icon: 'warning'
+            });
+        })
+
+        window.addEventListener('statusChange', e => {
+            $status = "Activated";
+            if (e.detail.status == false) {
+                $status = "Deactivated";
+            }
+            Swal.fire({
+                title: 'Member ' + $status,
+                icon: 'success'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     @this.on('triggerDelete', id => {
+        //         Swal.fire({
+        //             title: 'Are You Sure?',
+        //             text: 'Member record will be deleted!',
+        //             icon: "error",
+        //             showCancelButton: true,
+        //             confirmButtonColor: '#3085d6',
+        //             cancelButtonColor: '#aaa',
+        //             confirmButtonText: 'Delete!'
+        //         }).then((result) => {
+        //             if (result.value) {
+        //                 @this.call('deleteMember', id)
+        //                 Swal.fire({
+        //                     title: 'Member deleted successfully!',
+        //                     icon: 'success'
+        //                 });
+        //             }
+        //         });
+        //     });
+        // })
     </script>
 
 </div>

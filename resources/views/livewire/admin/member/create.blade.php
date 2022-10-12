@@ -3,15 +3,22 @@
         <form wire:submit.prevent="save">
             <div class="form-group">
                 <label class="form-label">Full name</label>
-                <input wire:model="name" type="text" class="form-control" placeholder="Customer name">
+                <input wire:model="name" name="name" type="text" class="form-control" placeholder="Customer name" autocomplete="name" >
                 @error('name')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
                 <label class="form-label">Email address</label>
-                <input wire:model="email" type="email" class="form-control" placeholder="Customer email address">
+                <input wire:model="email" type="email" name="email" class="form-control" placeholder="Customer email address" autocomplete="email">
                 @error('email')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone no.</label>
+                <input wire:model="phone" type="text" name="mobile" class="form-control" placeholder="Customer phone no ..." autocomplete="mobile">
+                @error('phone')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
@@ -19,13 +26,6 @@
                 <label class="form-label">Password</label>
                 <input wire:model="password" type="password" class="form-control" placeholder="Password">
                 @error('password')
-                    <span class="invalid-feedback d-block">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label class="form-label">Phone no.</label>
-                <input wire:model="phone" type="text" class="form-control" placeholder="Customer phone no ...">
-                @error('phone')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
