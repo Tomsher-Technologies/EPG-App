@@ -46,7 +46,7 @@ class Listing extends Component
     public function render()
     {
 
-        $query = User::whereIs('member')->with('member_details')->latest();
+        $query = User::whereIs('member')->with(['member_details', 'member_details.package'])->latest();
 
         if ((int)$this->package !== 0) {
             $pid = $this->package;
@@ -64,9 +64,8 @@ class Listing extends Component
                 });
         }
 
-        $members = $query->paginate(10);
+        $members = $query->whereIs('member')->paginate(10);
 
-        $members->load('member_details.package');
 
         return view('livewire.admin.member.listing', [
             'members' => $members,
