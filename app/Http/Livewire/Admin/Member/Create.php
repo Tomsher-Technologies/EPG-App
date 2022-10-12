@@ -22,6 +22,7 @@ class Create extends Component
 
     // Models
     public $name;
+    public $last_name;
     public $email;
     public $phone;
     public $nationality;
@@ -32,6 +33,7 @@ class Create extends Component
     {
         return [
             'name' => 'required',
+            'last_name' => 'required',
             'email' => ['required', 'email', 'unique:users,email'],
             'phone' => 'required',
             'password' => ['required', 'min:6'],
@@ -41,7 +43,8 @@ class Create extends Component
     }
 
     protected $messages = [
-        'name.required' => 'Please enter a name',
+        'name.required' => 'Please enter a first name',
+        'last_name.required' => 'Please enter a last name',
         'email.required' => 'The email address cannot be empty.',
         'phone.required' => 'The phone number cannot be empty.',
         'password.required' => 'Please enter a password',
@@ -65,6 +68,7 @@ class Create extends Component
         $validatedData = $this->validate();
         $user = User::create([
             'name' => $this->name,
+            'last_name' => $this->last_name,
             'email' => $this->email,
             'status' => 1,
             'password' => Hash::make($this->password),

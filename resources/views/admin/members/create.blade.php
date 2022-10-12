@@ -3,7 +3,7 @@
 @section('content')
     <div class="page-section container page__container">
         <div class="page-separator">
-            <div class="page-separator__text">Create new members</div>
+            <div class="page-separator__text">Create new member</div>
         </div>
         @livewire('admin.member.create')
     </div>

@@ -17,14 +17,14 @@
             <div class="col-lg-6">
                 <div class="list-group list-group-form">
 
-                    
+
 
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-form-label form-label col-sm-6">NAME</label>
                             <div class="col-sm-6 d-flex align-items-center">
                                 <div class="flex pc-text-right">
-                                    {{ $member->name }}
+                                    {{ $member->full_name }}
                                 </div>
                             </div>
                         </div>
@@ -32,10 +32,10 @@
 
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">nationality</label>
+                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
                             <div class="col-sm-6 d-flex align-items-center">
                                 <div class="flex pc-text-right">
-                                    {{ $member->member_details->nationality }}
+                                    {{ str_pad($member->id, 4, '0', STR_PAD_LEFT) }}
                                 </div>
                             </div>
                         </div>
@@ -65,14 +65,16 @@
 
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
-                            <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
+                            <label class="col-form-label form-label col-sm-6">nationality</label>
                             <div class="col-sm-6 d-flex align-items-center">
                                 <div class="flex pc-text-right">
-                                    {{ str_pad($member->id,4,'0',STR_PAD_LEFT) }}
+                                    {{ $member->member_details->nationality }}
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    
 
 
                 </div>
@@ -152,7 +154,7 @@
                             <label class="col-form-label form-label col-sm-6">Last used</label>
                             <div class="col-sm-6 d-flex align-items-center">
                                 <div class="flex pc-text-right">
-                                    {{ Carbon\Carbon::parse($member->member_details->last_used)->format('d/m/Y') }}
+                                    {{ $member->member_details->last_used ? Carbon\Carbon::parse($member->member_details->last_used)->format('d/m/Y') : "Never" }}
                                 </div>
                             </div>
                         </div>
@@ -166,10 +168,12 @@
                     <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <div class="flex">
-                                <a href="{{ route('members.printQr', $member) }}" target='new' class="btn btn-secondary">View / Print membership Card</a>
+                                <a href="{{ route('members.printQr', $member) }}" target='new'
+                                    class="btn btn-secondary">View / Print membership Card</a>
                                 <a href="{{ route('members.transactions', $member) }}" class="btn btn-secondary">View
                                     Previous Transactions</a>
-                                <a href="{{ route('members.purchase.index', $member) }}" class="btn btn-secondary">View / Add
+                                <a href="{{ route('members.purchase.index', $member) }}" class="btn btn-secondary">View /
+                                    Add
                                     Purchases</a>
                                 <a href="{{ route('members.logins', $member) }}" class="btn btn-secondary">View Login
                                     History</a>

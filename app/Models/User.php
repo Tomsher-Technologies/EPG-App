@@ -30,6 +30,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
         'status',
@@ -87,4 +88,8 @@ class User extends Authenticatable
         return $this->created_at->diffInDays($this->created_at->add('1 Y'));
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->name . " " . $this->last_name;
+    }
 }

@@ -2,10 +2,18 @@
     <div class="col-md-6">
         <form wire:submit.prevent="save">
             <div class="form-group">
-                <label class="form-label">Full name</label>
+                <label class="form-label">First name</label>
                 <input wire:model="member.name" type="text"
-                    class="form-control @error('member.name') {{ 'is-invalid' }} @enderror" placeholder="Member name">
+                    class="form-control @error('member.name') {{ 'is-invalid' }} @enderror" placeholder="Member First name">
                 @error('member.name')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label class="form-label">Last name</label>
+                <input wire:model="member.last_name" type="text"
+                    class="form-control @error('member.last_name') {{ 'is-invalid' }} @enderror" placeholder="Member Last name">
+                @error('member.last_name')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
