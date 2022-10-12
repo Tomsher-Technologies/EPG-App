@@ -13,21 +13,29 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $membersCount = Cache::rememberForever('memberCount', function () {
-            return User::whereIs('member')->count();
-        });
+        $membersCount = User::whereIs('member')->count();
+        
+        // $membersCount = Cache::rememberForever('memberCount', function () {
+        //     return User::whereIs('member')->count();
+        // });
 
-        $stafCount = Cache::rememberForever('recptionistCount', function () {
-            return User::whereIs('receptionist')->count();
-        });
+        // $stafCount = Cache::rememberForever('recptionistCount', function () {
+        //     return User::whereIs('receptionist')->count();
+        // });
+        
+        $stafCount = User::whereIs('receptionist')->count();
 
-        $locationCount = Cache::rememberForever('locationCount', function () {
-            return Location::count();
-        });
+        // $locationCount = Cache::rememberForever('locationCount', function () {
+        //     return Location::count();
+        // });
+        
+        $locationCount = Location::count();
 
-        $recentMembers = Cache::rememberForever('recentMembers', function () {
-            return User::whereIs('member')->latest()->with(['member_details','member_details.package'])->limit(10)->get();
-        });
+        // $recentMembers = Cache::rememberForever('recentMembers', function () {
+        //     return User::whereIs('member')->latest()->with(['member_details','member_details.package'])->limit(10)->get();
+        // });
+        
+        $recentMembers = User::whereIs('member')->latest()->with(['member_details','member_details.package'])->limit(10)->get();
 
         return view('admin.dashboard')
             ->with([

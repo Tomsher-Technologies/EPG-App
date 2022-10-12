@@ -45,14 +45,14 @@ class Listing extends Component
     public function render()
     {
 
-        $query = User::whereIs('superadmin')->latest();
+        $query = User::latest();
 
         if ($this->search !== '') {
             $query->where('name', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('email', 'LIKE', '%' . $this->search . '%');
         }
 
-        $users = $query->paginate(15);
+        $users = $query->whereIs('superadmin')->paginate(15);
 
         return view('livewire.admin.admin-users.listing', [
             'users' => $users

@@ -41,6 +41,7 @@ class Listing extends Component
         $member->update([
             'status' => !$member->status
         ]);
+        $this->dispatchBrowserEvent('statusChange', ['status' => $member->status]);
     }
 
     public function render()
@@ -57,7 +58,8 @@ class Listing extends Component
 
         if ($this->search !== '') {
             $search = $this->search;
-            $query->where('name', 'LIKE', '%' . $this->search . '%')
+            $query->where('id',  $this->search)
+                ->orWhere('name', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('email', 'LIKE', '%' . $this->search . '%')
                 ->orWhereHas('member_details', function ($q) use ($search) {
                     return $q->where('phone', 'LIKE', '%' . $search . '%');
@@ -80,6 +82,11 @@ class Listing extends Component
 
     public function deleteMember($id)
     {
-        User::destroy($id);
+        $status = User::destroy($id);
+        if ($status) {
+            $this->dispatchBrowserEvent('modelDeleted');
+        } else {
+            $this->dispatchBrowserEvent('modelDeletedFailed');
+        }
     }
 }

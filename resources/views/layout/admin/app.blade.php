@@ -72,9 +72,9 @@
         {{-- <script src="{{ getAdminAsset('js/sweetalert.js') }}"></script> --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ getAdminAsset('js/hljs.js') }}"></script>
-        <script src="{{ getAdminAsset('vendor/Chart.min.js') }}"></script>
-        <script src="{{ getAdminAsset('js/chartjs.js') }}"></script>
-        <script src="{{ getAdminAsset('js/page.crm-dashboard.js') }}"></script>
+        <!--<script src="{{ getAdminAsset('vendor/Chart.min.js') }}"></script>-->
+        <!--<script src="{{ getAdminAsset('js/chartjs.js') }}"></script>-->
+        <!--<script src="{{ getAdminAsset('js/page.crm-dashboard.js') }}"></script>-->
         <script src="{{ getAdminAsset('vendor/list.min.js') }}"></script>
         <script src="{{ getAdminAsset('js/list.js') }}"></script>
         <script src="{{ getAdminAsset('js/toggle-check-all.js') }}"></script>

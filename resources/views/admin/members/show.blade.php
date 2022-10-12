@@ -63,12 +63,12 @@
                         </div>
                     </div>
 
-<div class="list-group-item">
+                    <div class="list-group-item">
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-form-label form-label col-sm-6">CUSTOMER ID</label>
                             <div class="col-sm-6 d-flex align-items-center">
                                 <div class="flex pc-text-right">
-                                    {{ $member->id }}
+                                    {{ str_pad($member->id,4,'0',STR_PAD_LEFT) }}
                                 </div>
                             </div>
                         </div>
