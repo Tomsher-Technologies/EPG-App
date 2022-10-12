@@ -24,4 +24,9 @@ class Member extends Model
         return $this->belongsTo(Package::class);
     }
 
+    protected $casts = [
+        'purchase_date' => 'date',
+        'expiry_date' => 'date',
+    ];
+
 }

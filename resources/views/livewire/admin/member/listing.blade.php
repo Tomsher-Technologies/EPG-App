@@ -4,7 +4,7 @@
         <div class="card-header">
             <form class="form-inline">
                 <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
-                <input wire:model="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
+                <input wire:model.debounce.500ms="search" type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0"
                     id="inlineFormFilterBy" placeholder="Search ..." />
                 <label class="sr-only" for="inlineFormRole">Filter</label>
                 <select wire:model="package" wire:change="changePackage" id="inlineFormRole"
@@ -69,22 +69,24 @@
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
-                                {{ $member->member_details ? $member->member_details->package->name : ""}}
+                                {{ $member->member_details ? $member->member_details->package->name : '' }}
                             </div>
                         </td>
                         <td>
                             <div class="media align-items-center" style="white-space: nowrap">
                                 <div class="d-flex flex-column">
                                     @php
-                                        $status = getExpiryDateString($member->member_details->purchase_date, $member->member_details->expiry_date);
+                                        $status = $member->member_details ? getExpiryDateString($member->member_details->purchase_date, $member->member_details->expiry_date) : '';
                                     @endphp
-                                    <div class="text-{{ $status['status'] ? 'success' : 'danger' }}">
-                                        {{ $status['msg'] }}
-                                    </div>
-                                    <small class="js-lists-values-email text-50">
-                                        {{ $status['status'] ? 'Expires on:' : 'Expired on' }}
-                                        {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
-                                    </small>
+                                    @if ($status)
+                                        <div class="text-{{ $status['status'] ? 'success' : 'danger' }}">
+                                            {{ $status['msg'] }}
+                                        </div>
+                                        <small class="js-lists-values-email text-50">
+                                            {{ $status['status'] ? 'Expires on:' : 'Expired on' }}
+                                            {{ Carbon\Carbon::parse($member->member_details->expiry_date)->format('d/m/Y') }}
+                                        </small>
+                                    @endif
                                 </div>
 
                             </div>
