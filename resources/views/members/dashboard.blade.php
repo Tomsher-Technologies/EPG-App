@@ -110,7 +110,7 @@
                                                 </span>
                                             </td>
                                             <td data-cell-title="Used Location">
-                                                {{ $transaction->benefit->location->name }}
+                                                {{ $transaction->benefit->location ? $transaction->benefit->location->name : "" }}
                                             </td>
                                             <td data-cell-title="Last Used">
                                                 {{ $transaction->created_at->format('d/m/Y h:i A') }}
