@@ -21,17 +21,6 @@
                         <li class="menu-item current-menu-item">
                             <a href="{{ route('member.profile') }}">My Profile</a>
                         </li>
-                        <li class="menu-item current-menu-item" style="margin-top: 30px">
-                            <a href="https://wa.me/+97142488888" class="btn"
-                                style="
-                      background-color: #4fce5d;
-                      background-color: #4fce5d;
-                      padding: 10px;
-                      margin: -20px !important;
-                    ">
-                                <img width="20px" src="{{ asset('images/Whatsapp.png') }}" />
-                                Request Concierge</a>
-                        </li>
                     @endif
 
                     <li class="menu-item current-menu-item">
@@ -41,6 +30,20 @@
                     <li class="menu-item current-menu-item">
                         <a href="#">Contact</a>
                     </li>
+
+                    @if (auth()->user())
+                        <li class="menu-item current-menu-item" style="margin-top: 30px">
+                            <a href="https://wa.me/+97142488888" class="btn"
+                                style="
+                  background-color: #4fce5d;
+                  background-color: #4fce5d;
+                  padding: 10px;
+                  margin: -20px !important;
+                ">
+                                <img width="20px" src="{{ asset('images/Whatsapp.png') }}" />
+                                Request Concierge</a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
         </div>
