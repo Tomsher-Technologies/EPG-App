@@ -32,8 +32,8 @@ class MemberAuthController extends Controller
             $user->isA('member') &&
             Hash::check($request->password, $user->password)
         ) {
-            Auth::login($user);
-            return redirect()->intended('member.dashboard');
+            Auth::login($user, $request->get('remember'));
+            return redirect()->route('member.dashboard');
         }
 
         return back()->withErrors([
@@ -46,6 +46,6 @@ class MemberAuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->route('member.login');
     }
 }

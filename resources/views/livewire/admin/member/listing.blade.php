@@ -36,9 +36,11 @@
                             Validity
                         </a>
                     </th>
-                    <th>
-                        <a href="javascript:void(0)">Status</a>
-                    </th>
+                    @if (auth()->user()->isA('superadmin'))
+                        <th>
+                            <a href="javascript:void(0)">Status</a>
+                        </th>
+                    @endif
                     <th>
                         <a href="javascript:void(0)">ACTION</a>
                     </th>
@@ -47,17 +49,18 @@
             <tbody class="list" id="contacts">
                 @foreach ($members as $member)
                     <tr>
-                        <td class="pr-0">{{ str_pad($member->id,4,'0',STR_PAD_LEFT) }}</td>
+                        <td class="pr-0">{{ str_pad($member->id, 4, '0', STR_PAD_LEFT) }}</td>
                         <td>
                             <div class="media flex-nowrap align-items-center" style="white-space: nowrap">
                                 <div class="avatar avatar-sm mr-8pt">
-                                    <span class="avatar-title rounded-circle">{{ getInitials($member->name) }}</span>
+                                    <span
+                                        class="avatar-title rounded-circle">{{ getInitials($member->full_name) }}</span>
                                 </div>
                                 <div class="media-body">
                                     <div class="d-flex flex-column">
                                         <p class="mb-0">
                                             <strong class="js-lists-values-name">
-                                                {{ $member->name }}
+                                                {{ $member->full_name }}
                                             </strong>
                                         </p>
                                         <small class="js-lists-values-email text-50">
@@ -94,28 +97,35 @@
 
                             </div>
                         </td>
-                        <td>
-                            <div class="ml-auto mb-2 mb-sm-0 custom-control-inline mr-0">
-                                <div class="custom-control custom-checkbox-toggle ml-8pt">
-                                    {{-- <form action="" class="s-inline"> --}}
-                                    <input wire:click="toggleStatus({{ $member->id }})"
-                                        {{ $member->status == 1 ? 'checked' : '' }} value="{{ $member->id }}"
-                                        type="checkbox" id="active{{ $loop->iteration }}"
-                                        class="custom-control-input" />
-                                    <label class="custom-control-label"
-                                        for="active{{ $loop->iteration }}">Active</label>
-                                    {{-- </form> --}}
+                        @if (auth()->user()->isA('superadmin'))
+                            <td>
+                                <div class="ml-auto mb-2 mb-sm-0 custom-control-inline mr-0">
+                                    <div class="custom-control custom-checkbox-toggle ml-8pt">
+                                        {{-- <form action="" class="s-inline"> --}}
+                                        <input wire:click="toggleStatus({{ $member->id }})"
+                                            {{ $member->status == 1 ? 'checked' : '' }} value="{{ $member->id }}"
+                                            type="checkbox" id="active{{ $loop->iteration }}"
+                                            class="custom-control-input" />
+                                        <label class="custom-control-label"
+                                            for="active{{ $loop->iteration }}">Active</label>
+                                        {{-- </form> --}}
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
+                        @endif
                         <td>
-                            <button class="btn btn-accent" type="submit"
-                                wire:click="$emit('triggerDelete',{{ $member->id }})">
-                                <i class="material-icons">delete_forever</i>
-                            </button>
-                            <a type="button" class="btn btn-secondary" href="{{ route('members.edit', $member) }}">
-                                <i class="material-icons">mode_edit</i>
-                            </a>
+                            @if (auth()->user()->isA('superadmin'))
+                                <button class="btn btn-accent" type="submit"
+                                    wire:click="$emit('triggerDelete',{{ $member->id }})">
+                                    <i class="material-icons">delete_forever</i>
+                                </button>
+                            @endif
+                            @if (auth()->user()->isA('superadmin'))
+                                <a type="button" class="btn btn-secondary"
+                                    href="{{ route('members.edit', $member) }}">
+                                    <i class="material-icons">mode_edit</i>
+                                </a>
+                            @endif
                             <a type="button" class="btn btn-primary" href="{{ route('members.show', $member) }}">
                                 <i class="material-icons">pageview</i>
                             </a>
@@ -128,8 +138,8 @@
     <div class="card-footer p-8pt">
         {{ $members->links() }}
     </div>
-    
-    
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             @this.on('triggerDelete', id => {

@@ -2,22 +2,33 @@
     <div class="col-md-6">
         <form wire:submit.prevent="save">
             <div class="form-group">
-                <label class="form-label">Full name</label>
-                <input wire:model="name" name="name" type="text" class="form-control" placeholder="Customer name" autocomplete="name" >
+                <label class="form-label">First name</label>
+                <input wire:model="name" name="firstname" type="text" class="form-control" placeholder="Member first name"
+                    autocomplete="given-name">
                 @error('name')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
+                <label class="form-label">Last name</label>
+                <input wire:model="last_name" name="last_name" type="text" class="form-control" placeholder="Member last name"
+                    autocomplete="family-name">
+                @error('last_name')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label class="form-label">Email address</label>
-                <input wire:model="email" type="email" name="email" class="form-control" placeholder="Customer email address" autocomplete="email">
+                <input wire:model="email" type="email" name="email" class="form-control"
+                    placeholder="Customer email address" autocomplete="email">
                 @error('email')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
                 <label class="form-label">Phone no.</label>
-                <input wire:model="phone" type="text" name="mobile" class="form-control" placeholder="Customer phone no ..." autocomplete="mobile">
+                <input wire:model="phone" type="text" name="mobile" class="form-control"
+                    placeholder="Customer phone no ..." autocomplete="mobile">
                 @error('phone')
                     <span class="invalid-feedback d-block">{{ $message }}</span>
                 @enderror
@@ -58,7 +69,8 @@
                             <div class="form-group row align-items-center mb-0 justify-content-between">
                                 <label class="col-form-label form-label ">Validity</label>
                                 <div class=" d-flex align-items-center">
-                                    <div class="flex">{{ $packages->find($package)->validity }} {{ Str::plural('year', $packages->find($package)->validity) }}</div>
+                                    <div class="flex">{{ $packages->find($package)->validity }}
+                                        {{ Str::plural('year', $packages->find($package)->validity) }}</div>
                                 </div>
                             </div>
                         </div>

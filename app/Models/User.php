@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Location\Location;
 use App\Models\Location\Package;
 use App\Models\Member\Member;
+use App\Models\Member\Preference;
 use App\Models\Member\Purchase;
 use App\Models\Member\Transaction;
 use Carbon\Carbon;
@@ -30,6 +31,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
         'status',
@@ -77,6 +79,11 @@ class User extends Authenticatable
         return $this->hasMany(Purchase::class);
     }
 
+    function preference()
+    {
+        return $this->hasMany(Preference::class);
+    }
+
     public function getQRUrl()
     {
         return URL::to('/storage/qr-code/img-' . $this->id . '.svg');
@@ -87,4 +94,8 @@ class User extends Authenticatable
         return $this->created_at->diffInDays($this->created_at->add('1 Y'));
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->name . " " . $this->last_name;
+    }
 }

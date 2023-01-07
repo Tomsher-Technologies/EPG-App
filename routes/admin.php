@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Location\PackageController;
 use App\Http\Controllers\Admin\Location\Receptionist;
 use App\Http\Controllers\Admin\Member\MemberController;
 use App\Http\Controllers\Admin\Member\PurchaseController;
+use App\Http\Controllers\Admin\Settings\SettingsController;
 use App\Http\Controllers\Admin\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,9 @@ Route::prefix(env('ADMIN_PREFIX'))->group(function () {
         Route::group(['prefix' => 'benefit', 'as' => 'benefit.'], function () {
             Route::resource('category', BenefitCategoryController::class)->only(['index', 'create', 'edit']);
         });
+
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+        Route::post('/settings', [SettingsController::class, 'updateSettings']);
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/profile', function () {

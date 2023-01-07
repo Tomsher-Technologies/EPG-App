@@ -2,6 +2,7 @@
 
 namespace App\Models\Location;
 
+use App\Models\Member\Preference;
 use App\Models\Member\Transaction;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,10 @@ class Location extends Model
     public function receptionists()
     {
         return $this->hasMany(User::class);
+    }
+    public function preference()
+    {
+        return $this->hasMany(Preference::class);
     }
 
     public function category()

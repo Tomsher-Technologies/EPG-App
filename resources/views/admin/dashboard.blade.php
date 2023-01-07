@@ -44,16 +44,17 @@
                                         </p>
                                     </div>
                                 </div>
-                               
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                             @if (auth()->user()->isA('superadmin'))
-                                            <a href="{{ route('members.index') }}" class="btn btn-sm btn-outline-secondary">View
+
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        @if (auth()->user()->isA('superadmin'))
+                                            <a href="{{ route('members.index') }}"
+                                                class="btn btn-sm btn-outline-secondary">View
                                                 all members</a>
-                                                 @endif
-                                        </div>
+                                        @endif
                                     </div>
-                               
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -67,16 +68,16 @@
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
-                                
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            @if (auth()->user()->isA('superadmin'))
+
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        @if (auth()->user()->isA('superadmin'))
                                             <a href="{{ route('location.index') }}"
                                                 class="btn btn-sm btn-outline-secondary">View all locations</a>
-                                                @endif
-                                        </div>
+                                        @endif
                                     </div>
-                                
+                                </div>
+
                             </div>
                         </div>
 
@@ -93,110 +94,19 @@
                                     </div>
                                     {{-- <i class="material-icons text-50">more_horiz</i> --}}
                                 </div>
-                               
+
                                 <div class="card-body">
                                     <div class="text-center">
-                                         @if (auth()->user()->isA('superadmin'))
-                                        <a href="{{ route('receptionist.index') }}"
-                                            class="btn btn-sm btn-outline-secondary">View all RECEPTIONISTS</a>
-                                              @endif
+                                        @if (auth()->user()->isA('superadmin'))
+                                            <a href="{{ route('receptionist.index') }}"
+                                                class="btn btn-sm btn-outline-secondary">View all RECEPTIONISTS</a>
+                                        @endif
                                     </div>
                                 </div>
-                              
+
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div class="row card-group-row">
-                        <div class="col-md-6 card-group-row__col">
-                            <div class="card card-group-row__card">
-                                <div class="card-header d-flex">
-                                    <div class="flex d-flex align-items-center">
-                                        <div class="h2 mb-0 mr-3">
-                                            500
-                                        </div>
-                                        <div class="flex d-flex flex-column">
-                                            <p class="card-title">
-                                                Location Access
-                                            </p>
-                                            <p class="card-subtitle text-50">
-                                                This month
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <div class="mb-4pt">
-                                        <p class="d-flex align-items-center mb-0">
-                                            <small class="flex lh-24pt"><strong>Restaurant,
-                                                </strong></small>
-                                            <small class="text-50 lh-24pt">150 visits</small>
-                                        </p>
-                                        <div class="progress" style="height: 4px">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%"
-                                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-4pt">
-                                        <p class="d-flex align-items-center mb-0">
-                                            <small class="flex lh-24pt"><strong>Spa,
-                                                </strong></small>
-                                            <small class="text-50 lh-24pt">50 visits</small>
-                                        </p>
-                                        <div class="progress" style="height: 4px">
-                                            <div class="progress-bar bg-accent" role="progressbar" style="width: 10%"
-                                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 card-group-row__col">
-                            <div class="card card-group-row__card">
-                                <div class="card-header p-0 nav border-0">
-                                    <div class="row no-gutters flex" role="tablist">
-                                        <div class="col-auto">
-                                            <div class="p-card-header d-flex align-items-center">
-                                                <div class="h2 mb-0 mr-3">
-                                                    20%
-                                                </div>
-                                                <div class="flex">
-                                                    <p class="card-title">
-                                                        Reward
-                                                        Points
-                                                        Reduptions
-                                                    </p>
-                                                    <div class="d-flex align-items-center">
-                                                        <p class="text-50 mb-0 d-flex align-items-center mr-16pt">
-                                                            <i class="indicator-line rounded bg-gray mr-8pt"></i>
-                                                            <small>Generation</small>
-                                                        </p>
-                                                        <p class="text-50 mb-0 d-flex align-items-center">
-                                                            <i class="indicator-line rounded bg-primary mr-8pt"></i>
-                                                            <small>Redumption</small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto ml-sm-auto">
-                                            <div class="p-card-header pl-0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body position-relative o-hidden p-0">
-                                    <div class="chart z-0" style="height: 125px">
-                                        <canvas id="viewsChart"
-                                            class="chart-canvas js-update-chart-line js-update-chart-line-2nd-accent"
-                                            data-chart-line-border-color="primary,gray" data-chart-suffix=" views"
-                                            data-chart-hide-axes="true"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
 
@@ -263,10 +173,12 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a type="button" class="btn btn-secondary"
-                                                href="{{ route('members.edit', $member) }}">
-                                                <i class="material-icons">mode_edit</i>
-                                            </a>
+                                            @if (auth()->user()->isA('superadmin'))
+                                                <a type="button" class="btn btn-secondary"
+                                                    href="{{ route('members.edit', $member) }}">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </a>
+                                            @endif
                                             <a type="button" class="btn btn-primary"
                                                 href="{{ route('members.show', $member) }}">
                                                 <i class="material-icons">pageview</i>

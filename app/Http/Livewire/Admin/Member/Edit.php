@@ -25,6 +25,7 @@ class Edit extends Component
     {
         return [
             'member.name' => 'required',
+            'member.last_name' => 'required',
             'member.email' => ['required', 'email', 'unique:users,email,' . $this->member->id],
             'member.member_details.phone' => 'required',
             'member.member_details.nationality' => 'required',
@@ -33,7 +34,8 @@ class Edit extends Component
     }
 
     protected $messages = [
-        'member.name.required' => 'Please enter a name',
+        'member.name.required' => 'Please enter a first name',
+        'member.last_name.required' => 'Please enter a last name',
         'member.email.required' => 'The email address cannot be empty.',
         'member.member_details.phone.required' => 'The phone number cannot be empty.',
         'member.email.email' => 'The email address format is not valid.',

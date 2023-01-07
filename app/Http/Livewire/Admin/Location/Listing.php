@@ -34,7 +34,8 @@ class Listing extends Component
 
     public function deleteLocation($id)
     {
-        $status = Location::where('id', $id)->first()->delete();
+        $location = Location::where('id', $id)->first();
+        $status = $location->delete();
         if ($status) {
             $this->dispatchBrowserEvent('modelDeleted');
         } else {

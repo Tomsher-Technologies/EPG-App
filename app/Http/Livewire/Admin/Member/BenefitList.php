@@ -44,6 +44,13 @@ class BenefitList extends Component
             'location_id' => $this->adminUser->location->id,
         ]);
 
+        // $this->user->load('member_details');
+        if ($this->user->member_details->first_used == NULL) {
+            $this->user->member_details->first_used = Carbon::now();
+        }
+        $this->user->member_details->last_used = Carbon::now();
+        $this->user->member_details->save();
+
         $this->dispatchBrowserEvent('memberUpdated');
 
         $this->resetPage();
@@ -181,10 +188,9 @@ class BenefitList extends Component
                 'usedBenefits' => $usedBenefits,
             ]);
     }
-    
+
     public function paginationView()
     {
         return 'admin.parts.custom-pagination-links';
     }
-    
 }
