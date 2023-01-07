@@ -8,6 +8,11 @@ function getAdminAsset($item)
     return asset('dashboard-assets') . '/' . $item;
 }
 
+function getUserAsset($item)
+{
+    return asset($item);
+}
+
 /**
  * @return string
  */

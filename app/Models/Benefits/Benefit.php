@@ -2,6 +2,7 @@
 
 namespace App\Models\Benefits;
 
+use App\Models\Location\Location;
 use App\Models\Location\Package;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,11 @@ class Benefit extends Model
     public function package()
     {
         return $this->belongsToMany(Package::class, 'benefits_packages');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class,'location_id')->withTrashed();
     }
 
     public function isLimited()

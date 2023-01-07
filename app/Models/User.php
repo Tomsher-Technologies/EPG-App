@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Location\Location;
 use App\Models\Location\Package;
 use App\Models\Member\Member;
+use App\Models\Member\Preference;
 use App\Models\Member\Purchase;
 use App\Models\Member\Transaction;
 use Carbon\Carbon;
@@ -76,6 +77,11 @@ class User extends Authenticatable
     function purchases()
     {
         return $this->hasMany(Purchase::class);
+    }
+
+    function preference()
+    {
+        return $this->hasMany(Preference::class);
     }
 
     public function getQRUrl()

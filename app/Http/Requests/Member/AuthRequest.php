@@ -25,8 +25,8 @@ class AuthRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string',
-            'password' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required',
         ];
     }
 
@@ -34,9 +34,8 @@ class AuthRequest extends FormRequest
     {
         return [
             'email.required' => 'Please enter you email',
-            'email.string' => 'Please enter you email',
+            'email.email' => 'Please enter you email',
             'password.required' => 'Please enter you password',
-            'password.string' => 'Please enter you password',
         ];
     }
 }
